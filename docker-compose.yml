@@ -1,0 +1,44 @@
+# ===========================================================
+# AlgoArena - Root Docker Compose (deploy_version)
+# Run from deploy_version: docker compose up --build
+# ===========================================================
+
+services:
+  # --- Node.js backend (API + WebSocket) ---
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - CORS_ORIGIN=${CORS_ORIGIN:-*}
+      - EXEC_TIMEOUT=${EXEC_TIMEOUT:-30000}
+      - RATE_MAX_REQ=${RATE_MAX_REQ:-30}
+      - WS_MAX_CONNECTIONS=${WS_MAX_CONNECTIONS:-50}
+    expose:
+      - "3000"
+    # No published ports - nginx fronts everything
+    tmpfs:
+      - /tmp:exec,size=512m
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 1G
+          pids: 256
+
+  # --- Nginx (static files + reverse proxy) ---
+  nginx:
+    image: nginx:alpine
+    restart: unless-stopped
+    ports:
+      - "${HTTP_PORT:-8081}:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./main-frontend:/usr/share/nginx/main-frontend:ro
+      - ./frontend:/usr/share/nginx/frontend:ro
+      - ./playground/client:/usr/share/nginx/html:ro
+    depends_on:
+      - app

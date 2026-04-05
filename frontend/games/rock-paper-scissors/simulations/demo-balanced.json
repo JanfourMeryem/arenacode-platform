@@ -1,0 +1,32 @@
+{
+  "metadata": {
+    "title": "RPS Balanced Demo",
+    "description": "Fallback simulation for Rock Paper Scissors challenge.",
+    "date": "2026-04-01",
+    "version": "1.0"
+  },
+  "meta": {
+    "rounds": 6,
+    "tickDurationMs": 900
+  },
+  "players": {
+    "user": { "name": "Code Runner" },
+    "bot": { "name": "Arena Bot" }
+  },
+  "rounds": [
+    { "t": 0, "round": 1, "userMoveCode": 1, "userMove": "ROCK", "botMoveCode": 3, "botMove": "SCISSORS", "outcome": "win" },
+    { "t": 1, "round": 2, "userMoveCode": 2, "userMove": "PAPER", "botMoveCode": 2, "botMove": "PAPER", "outcome": "draw" },
+    { "t": 2, "round": 3, "userMoveCode": 3, "userMove": "SCISSORS", "botMoveCode": 1, "botMove": "ROCK", "outcome": "loss" },
+    { "t": 3, "round": 4, "userMoveCode": 2, "userMove": "PAPER", "botMoveCode": 1, "botMove": "ROCK", "outcome": "win" },
+    { "t": 4, "round": 5, "userMoveCode": 1, "userMove": "ROCK", "botMoveCode": 2, "botMove": "PAPER", "outcome": "loss" },
+    { "t": 5, "round": 6, "userMoveCode": 3, "userMove": "SCISSORS", "botMoveCode": 3, "botMove": "SCISSORS", "outcome": "draw" }
+  ],
+  "result": {
+    "outcome": "draw",
+    "reason": "Balanced match: 2 wins, 2 losses, 2 draws.",
+    "finalRound": 6,
+    "wins": 2,
+    "losses": 2,
+    "draws": 2
+  }
+}

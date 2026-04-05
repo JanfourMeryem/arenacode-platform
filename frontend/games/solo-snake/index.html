@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solo Snake Sprint - Gamified Educational Platform</title>
+  <link rel="stylesheet" href="css/styles.css?v=guide-fix-20260401" />
+  <link rel="stylesheet" href="/shared-theme.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="background-effects">
+    <div class="nebula"></div>
+    <div class="stardust"></div>
+  </div>
+
+  <header class="site-header">
+    <nav class="navbar">
+      <a class="brand" href="/">
+        <span class="brand-icon">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+            <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/>
+          </svg>
+        </span>
+        <span class="brand-text">ArenaCode</span>
+      </a>
+
+      <ul class="nav-links">
+        <li>
+          <a href="/">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
+            <span data-i18n="nav.home">Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="/playground/">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7l-4 5 4 5M16 7l4 5-4 5M13 5l-2 14"/></svg>
+            <span data-i18n="nav.playground">Playground</span>
+          </a>
+        </li>
+        <li>
+          <a class="active" href="/challenges/">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 8h7a4.5 4.5 0 0 1 4.5 4.5v0A4.5 4.5 0 0 1 15.5 17h-7A4.5 4.5 0 0 1 4 12.5v0A4.5 4.5 0 0 1 8.5 8z"/><path d="M8 12h.01M12 12h.01M16 12h.01"/></svg>
+            <span data-i18n="nav.challenges">Challenges</span>
+          </a>
+        </li>
+        <li>
+          <a href="/learn/">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h7v14H4zM13 5h7v14h-7zM11 7h2M11 17h2"/></svg>
+            <span data-i18n="nav.learn">Learn</span>
+          </a>
+        </li>
+      </ul>
+      <div class="header-actions">
+        <button id="themeToggle" class="global-theme-toggle" type="button" aria-label="Switch to light mode" title="Switch to light mode">
+          <svg class="theme-icon sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="theme-icon moon-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <div class="app-container">
+    <section class="snake-intro" aria-labelledby="snakeIntroTitle">
+      <div class="snake-intro-head">
+        <p class="snake-intro-tag" data-i18n="snake.tag">Snake Challenge</p>
+        <h1 id="snakeIntroTitle" data-i18n="snake.title">Solo Snake Sprint</h1>
+        <p class="snake-intro-desc">
+          <span data-i18n="snake.desc.pre">Read the board size and the initial snake position from </span><code>stdin</code><span data-i18n="snake.desc.post">, compute valid moves step by step, then run your code. The platform will generate and replay your simulation.</span>
+        </p>
+      </div>
+
+      <article class="snake-explainer-card" aria-label="Snake challenge guide">
+        <div class="snake-guide-block">
+          <h2 data-i18n="common.rules">Rules</h2>
+          <ul>
+            <li><span data-i18n="snake.rules.item1_pre">Read input from </span><code>stdin</code><span data-i18n="snake.rules.item1_post"> before computing moves.</span></li>
+            <li data-i18n="snake.rules.item2">Output one move per line using only these codes:</li>
+          </ul>
+          <div class="moves-map" aria-label="Move codes">
+            <span><code>1</code> = <strong>UP</strong></span>
+            <span><code>2</code> = <strong>DOWN</strong></span>
+            <span><code>3</code> = <strong>RIGHT</strong></span>
+            <span><code>4</code> = <strong>LEFT</strong></span>
+          </div>
+          <ul>
+            <li data-i18n="snake.rules.item3">Avoid wall collisions and revisiting cells when possible.</li>
+          </ul>
+        </div>
+
+        <div class="snake-guide-block">
+          <h2 data-i18n="common.input_output">Input / Output</h2>
+          <p><strong data-i18n="snake.input.vars">Input variables</strong>:</p>
+          <ul>
+            <li><code>w</code> = <span data-i18n="snake.input.var.w">grid width</span></li>
+            <li><code>h</code> = <span data-i18n="snake.input.var.h">grid height</span></li>
+            <li><code>x</code> = <span data-i18n="snake.input.var.x">initial horizontal position</span></li>
+            <li><code>y</code> = <span data-i18n="snake.input.var.y">initial vertical position</span></li>
+          </ul>
+          <p><strong data-i18n="snake.input.format">Input format</strong>:</p>
+          <p>line 1: <code>w h</code></p>
+          <p>line 2: <code>x y</code></p>
+          <pre><code>w h
+x y</code></pre>
+          <p><strong data-i18n="snake.input.output">Output format</strong>: one move code per line.</p>
+          <pre><code>3
+3
+1
+1</code></pre>
+        </div>
+
+        <div class="snake-guide-block">
+          <h2 data-i18n="common.example">Example</h2>
+          <pre class="pseudo-inline"><code># PSEUDO-CODE (not runnable)
+read w, h
+read x, y
+
+while game is not finished:
+    choose a valid direction using your own strategy
+    output one move among {1, 2, 3, 4}</code></pre>
+        </div>
+      </article>
+    </section>
+
+    <section id="gameSection" class="existing-game-section">
+      <div class="main-content challenge-layout">
+      <section class="challenge-column challenge-game-column">
+        <main class="game-area">
+          <div class="canvas-container">
+            <canvas id="gameCanvas"></canvas>
+            <div class="game-overlay" id="gameOverlay">
+              <div class="overlay-content">
+                <h2 class="overlay-title" id="overlayTitle">Solo Snake Sprint</h2>
+                <p class="overlay-message" id="overlayMessage">Write code and press Run to generate a simulation, then press Play to begin</p>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <aside class="side-panel" id="sidePanel">
+          <div class="panel-section compact-controls">
+            <div class="control-bar" role="group" aria-label="Playback controls">
+                <button id="playButton" class="btn btn-success" disabled>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                  <path d="M3 2l10 6-10 6V2z"/>
+                </svg>
+                <span data-i18n="common.play">Play</span>
+              </button>
+              <button id="pauseButton" class="btn btn-secondary" disabled>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                  <path d="M5 3h2v10H5V3zm4 0h2v10H9V3z"/>
+                </svg>
+                <span data-i18n="common.pause">Pause</span>
+              </button>
+              <button id="resetButton" class="btn btn-secondary" disabled>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                  <path d="M8 3a5 5 0 105 5h-2a3 3 0 11-3-3V2l4 3-4 3V5z"/>
+                </svg>
+                <span data-i18n="common.restart">Restart</span>
+              </button>
+              <label for="speedSlider" class="speed-inline">
+                <span class="speed-inline-label" data-i18n="common.speed">Speed:</span>
+                <input type="range" id="speedSlider" min="0.5" max="3" step="0.5" value="1" class="slider">
+                <span id="speedValue" class="speed-inline-value">1.0x</span>
+              </label>
+            </div>
+
+            <!-- Hidden but preserved: keeps same JS flow and fallback replay loading. -->
+            <label class="sr-only" for="simulationSelector">Select a simulation</label>
+            <select id="simulationSelector" class="simulation-selector sr-only">
+              <option value="simulations/solo-1-perfect-run.json">Perfect Training Run</option>
+              <option value="simulations/solo-2-wall-crunch.json">Wall Crunch Lesson</option>
+              <option value="simulations/solo-3-tight-turns.json">Tight Turns Drill</option>
+            </select>
+            <button id="loadSimulation" class="btn btn-primary sr-only">Load simulation</button>
+
+            <!-- Hidden telemetry fields kept for compatibility with existing UI controller. -->
+            <div class="visually-hidden-data" aria-hidden="true">
+              <span id="snakeName">Neon Serpent</span>
+              <span id="snakeDirection">&mdash;</span>
+              <span id="snakeStatus">Ready</span>
+              <span id="snakeLength">0</span>
+              <span id="appleProgress">Auto</span>
+              <span id="currentTurn">0</span>
+              <span id="gameState">Ready</span>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="challenge-column challenge-playground-column" aria-label="Integrated playground">
+        <div class="challenge-playground-header">
+          <h3 class="section-title" data-i18n="common.playground">Playground</h3>
+          
+        </div>
+        <iframe
+          id="integratedPlayground"
+          class="challenge-playground-frame"
+          src="/playground/index.html?embed=challenge&challenge=snake"
+          title="Integrated code playground"
+          loading="lazy"
+        ></iframe>
+      </section>
+      </div>
+    </section>
+
+    <div class="settings-panel-overlay" id="settingsPanelOverlay"></div>
+
+    <div class="settings-panel" id="settingsPanel">
+      <div class="settings-content">
+        <button class="settings-close" id="settingsClose" aria-label="Close settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 6l12 12M18 6L6 18"/>
+          </svg>
+        </button>
+        <h3 class="settings-title">Settings</h3>
+
+        <div class="settings-section">
+          <h4 class="settings-subtitle">Visual</h4>
+          <div class="setting-item">
+            <label class="setting-label">
+              <input type="checkbox" id="showGridLines" checked>
+              <span>Show grid lines</span>
+            </label>
+          </div>
+          <div class="setting-item">
+            <label class="setting-label">
+              <input type="checkbox" id="showGlow" checked>
+              <span>Show snake glow effects</span>
+            </label>
+          </div>
+          <div class="setting-item">
+            <label class="setting-label">
+              <input type="checkbox" id="smoothAnimation" checked>
+              <span>Smooth animation</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <h4 class="settings-subtitle">Grid</h4>
+          <div class="setting-item">
+            <label class="setting-label">
+              <span>Cell size</span>
+            </label>
+            <input type="range" id="cellSizeSlider" min="20" max="45" value="32" class="slider">
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <h4 class="settings-subtitle">Theme</h4>
+          <div class="theme-selector">
+            <button class="theme-option active" data-theme="dark">
+              <span class="theme-preview dark-preview"></span>
+              <span>Dark</span>
+            </button>
+            <button class="theme-option" data-theme="light">
+              <span class="theme-preview light-preview"></span>
+              <span>Light</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/shared/i18n.js"></script>
+  <script src="/shared/i18n-engine.js"></script>
+  <script src="/theme-toggle.js"></script>
+  <script type="module" src="js/main.js"></script>
+  <script>
+    (function syncHeaderHeight() {
+      const header = document.querySelector('.site-header');
+      if (!header) return;
+
+      const update = () => {
+        document.documentElement.style.setProperty('--site-header-height', `${header.offsetHeight}px`);
+      };
+
+      update();
+      window.addEventListener('resize', update);
+    })();
+
+    (function keepGuideAtTopOnLoad() {
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+
+      const scrollToTop = () => {
+        if (window.location.hash) {
+          history.replaceState(null, '', window.location.pathname + window.location.search);
+        }
+        const appContainer = document.querySelector('.app-container');
+        if (appContainer) appContainer.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      };
+
+      const scrollToTopDeferred = () => {
+        scrollToTop();
+        requestAnimationFrame(scrollToTop);
+        setTimeout(scrollToTop, 60);
+        setTimeout(scrollToTop, 240);
+      };
+
+      window.addEventListener('DOMContentLoaded', scrollToTop);
+      window.addEventListener('load', scrollToTopDeferred);
+      window.addEventListener('pageshow', scrollToTopDeferred);
+
+      const iframe = document.getElementById('integratedPlayground');
+      if (iframe) {
+        iframe.addEventListener('load', scrollToTopDeferred);
+      }
+    })();
+  </script>
+</body>
+</html>

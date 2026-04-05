@@ -1,0 +1,40 @@
+{
+  "metadata": {
+    "title": "Wall Crunch Lesson",
+    "description": "Demonstrates how a late turn can end a promising run.",
+    "date": "2025-03-01",
+    "version": "1.0"
+  },
+  "grid": { "width": 30, "height": 18 },
+  "player": {
+    "name": "Amber Runner",
+    "color": {
+      "head": "#fcca4b",
+      "body": "#4a3608",
+      "glow": "#fcb833"
+    },
+    "startPosition": { "x": 9, "y": 5 },
+    "startDirection": "LEFT",
+    "initialLength": 3
+  },
+  "moves": [
+    { "turn": 1, "direction": "LEFT" },
+    { "turn": 2, "direction": "LEFT" },
+    { "turn": 3, "direction": "LEFT" },
+    { "turn": 4, "direction": "UP" },
+    { "turn": 5, "direction": "UP" },
+    { "turn": 6, "direction": "LEFT" },
+    { "turn": 7, "direction": "LEFT" },
+    { "turn": 8, "direction": "LEFT" },
+    { "turn": 9, "direction": "UP" },
+    { "turn": 10, "direction": "LEFT" },
+    { "turn": 11, "direction": "LEFT" },
+    { "turn": 12, "direction": "LEFT" },
+    { "turn": 13, "direction": "LEFT" }
+  ],
+  "result": {
+    "outcome": "fail",
+    "reason": "Hit the wall on the final dash",
+    "finalTurn": 13
+  }
+}

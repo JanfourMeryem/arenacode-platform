@@ -1,0 +1,23 @@
+{
+  "meta": {
+    "title": "Missed haul",
+    "lanes": ["left", "center", "right"],
+    "length": 12,
+    "forceMoves": true
+  },
+  "player": { "startLane": "center" },
+  "steps": [
+    { "t": 0, "move": "CENTER" },
+    { "t": 1, "move": "LEFT" },
+    { "t": 2, "move": "LEFT" },
+    { "t": 3, "move": "CENTER" },
+    { "t": 4, "move": "LEFT" },
+    { "t": 5, "move": "LEFT" },
+    { "t": 6, "move": "RIGHT" },
+    { "t": 7, "move": "RIGHT" },
+    { "t": 8, "move": "LEFT" },
+    { "t": 9, "move": "LEFT" },
+    { "t": 10, "move": "CENTER" },
+    { "t": 11, "move": "RIGHT" }
+  ]
+}

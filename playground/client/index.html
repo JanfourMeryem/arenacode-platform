@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="midnight" data-theme-model="midnight-daylight">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlgoArena</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- xterm.js -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm@5.3.0/css/xterm.min.css">
+
+  <!-- App CSS -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/icons.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="/shared-theme.css">
+
+  <style>
+    /* Loading screen while Monaco loads */
+    #loading-screen {
+      position: fixed; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 16px;
+      background: var(--bg-primary);
+      z-index: 10000;
+      transition: opacity 0.4s;
+    }
+    #loading-screen.fade-out { opacity: 0; pointer-events: none; }
+    .loading-spinner {
+      width: 36px; height: 36px;
+      border: 3px solid var(--border-primary);
+      border-top-color: var(--accent-primary);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    .loading-text {
+      font-size: 13px; color: var(--text-muted);
+      font-family: var(--font-sans);
+    }
+  </style>
+</head>
+<body>
+  <script>
+    (function markEmbedChallengeContext() {
+      const params = new URLSearchParams(window.location.search || '');
+      const embed = (params.get('embed') || '').trim().toLowerCase();
+      const challenge = (params.get('challenge') || '').trim().toLowerCase();
+      const inChallengeMode = embed === 'challenge' || Boolean(challenge);
+
+      if (inChallengeMode) {
+        document.documentElement.classList.add('is-embedded-challenge');
+        document.documentElement.style.setProperty('--site-header-height', '0px');
+      }
+    })();
+  </script>
+
+  <header class="site-header">
+    <nav class="navbar">
+      <a class="brand" href="/">
+        <span class="brand-icon">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+            <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/>
+          </svg>
+        </span>
+        <span class="brand-text">ArenaCode</span>
+      </a>
+
+      <ul class="nav-links">
+        <li>
+          <a href="/">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
+            <span data-i18n="nav.home">Home</span>
+          </a>
+        </li>
+        <li>
+          <a class="active" href="/playground/">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7l-4 5 4 5M16 7l4 5-4 5M13 5l-2 14"/></svg>
+            <span data-i18n="nav.playground">Playground</span>
+          </a>
+        </li>
+        <li>
+          <a href="/challenges/">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 8h7a4.5 4.5 0 0 1 4.5 4.5v0A4.5 4.5 0 0 1 15.5 17h-7A4.5 4.5 0 0 1 4 12.5v0A4.5 4.5 0 0 1 8.5 8z"/><path d="M8 12h.01M12 12h.01M16 12h.01"/></svg>
+            <span data-i18n="nav.challenges">Challenges</span>
+          </a>
+        </li>
+        <li>
+          <a href="/learn/">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h7v14H4zM13 5h7v14h-7zM11 7h2M11 17h2"/></svg>
+            <span data-i18n="nav.learn">Learn</span>
+          </a>
+        </li>
+      </ul>
+      <div class="header-actions">
+        <button class="global-theme-toggle" type="button" data-global-theme-toggle aria-label="Switch to light mode" title="Switch to light mode">
+          <svg class="theme-icon sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="theme-icon moon-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loading-spinner"></div>
+    <div class="loading-text" data-i18n="playground.loading">Loading ArenaCode...</div>
+  </div>
+
+  <!-- ═══ App Shell — VS Code Layout ═══ -->
+  <div id="app">
+
+    <!-- ═══ Title Bar ═══ -->
+    <header id="titlebar">
+      <div class="titlebar-left">
+        <button id="explorer-toggle-btn" class="btn-icon btn-icon-sm embed-explorer-toggle" title="Toggle Explorer" aria-label="Toggle file explorer" aria-expanded="false">
+          <i class="icon icon-menu icon-sm"></i>
+        </button>
+        
+      </div>
+      <div class="titlebar-center">
+        <input id="project-name-input" class="titlebar-project-name" type="text" value="Untitled Project" data-i18n-value="playground.project.untitled" spellcheck="false">
+      </div>
+      <div class="titlebar-right">
+        <div class="lang-select-wrapper">
+          <select id="language-select">
+            <option value="python">Python</option>
+            <option value="javascript">JavaScript</option>
+            <option value="typescript">TypeScript</option>
+            <option value="java">Java</option>
+            <option value="c">C</option>
+            <option value="cpp">C++</option>
+            <option value="csharp">C#</option>
+            <option value="go">Go</option>
+            <option value="ruby">Ruby</option>
+            <option value="php">PHP</option>
+          </select>
+        </div>
+        <button id="run-btn" class="run-btn" title="Run (Ctrl+Enter)">
+          <i id="run-icon" class="icon icon-play icon-sm"></i>
+          <span id="run-label" data-i18n="common.run">Run</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ═══ Activity Bar (far left, icon-only) ═══ -->
+    <nav id="activity-bar">
+      <div class="activity-bar-top">
+        <button class="activity-btn active" data-panel="explorer" title="Explorer (Ctrl+B)">
+          <i class="icon icon-files icon-lg"></i>
+        </button>
+        <button class="activity-btn" data-action="projects" title="Projects">
+          <i class="icon icon-folder icon-lg"></i>
+        </button>
+        <button class="activity-btn" data-action="templates" title="Templates">
+          <i class="icon icon-layout-template icon-lg"></i>
+        </button>
+      </div>
+      <div class="activity-bar-bottom">
+        <button class="activity-btn" data-action="theme" title="Theme">
+          <i class="icon icon-palette icon-lg"></i>
+        </button>
+        <button class="activity-btn" data-action="settings" title="Settings">
+          <i class="icon icon-settings icon-lg"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ═══ Sidebar (Explorer) ═══ -->
+    <aside id="sidebar">
+      <div class="sidebar-header">
+        <span class="sidebar-title" data-i18n="playground.files">FILES</span>
+        <button id="new-file-btn" class="btn-icon btn-icon-sm sidebar-add-file-btn" title="Add file">
+          <i class="icon icon-plus icon-sm"></i>
+          <span class="sidebar-add-file-label" data-i18n="playground.add_file">Add File</span>
+        </button>
+      </div>
+      <div id="file-tree"></div>
+    </aside>
+
+    <!-- ═══ Main Area (Editor + Panel) ═══ -->
+    <main id="main-area">
+      <div id="editor-area">
+        <div id="tab-bar"></div>
+        <div id="editor-container"></div>
+      </div>
+
+      <div id="terminal-resize" class="resize-handle horizontal"></div>
+
+      <div id="panel-area">
+        <div class="panel-header">
+        <div class="panel-tabs">
+            <button class="panel-tab active"><i class="icon icon-terminal icon-xs"></i> <span data-i18n="playground.terminal">Terminal</span></button>
+        </div>
+          <div class="panel-actions">
+            <button id="clear-terminal" class="btn-icon btn-icon-sm" title="Clear"><i class="icon icon-eraser icon-xs"></i></button>
+            <button id="toggle-terminal" class="btn-icon btn-icon-sm" title="Toggle Panel (Ctrl+\`)"><i class="icon icon-chevron-down icon-xs"></i></button>
+            <button id="maximize-panel" class="btn-icon btn-icon-sm" title="Maximize Panel"><i class="icon icon-maximize icon-xs"></i></button>
+          </div>
+        </div>
+        <div id="terminal-container"></div>
+      </div>
+    </main>
+
+    <!-- ═══ Status Bar ═══ -->
+    <footer id="statusbar">
+      <div class="statusbar-left">
+        <span id="status-language" class="statusbar-item statusbar-item-accent">Python</span>
+        <span id="status-line-col" class="statusbar-item">Ln 1, Col 1</span>
+        <span id="status-timer" class="statusbar-item statusbar-timer">0.0s</span>
+      </div>
+      <div class="statusbar-right">
+        <span id="status-connection" class="statusbar-item"><span class="status-dot connected"></span> <span class="status-label" data-i18n="common.ready">Ready</span></span>
+        <button id="zen-btn" class="statusbar-item statusbar-btn" title="Zen Mode"><i class="icon icon-maximize icon-xs"></i> <span data-i18n="playground.zen">Zen</span></button>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ═══ Modal Overlay ═══ -->
+  <div id="modal-overlay" class="modal-overlay hidden">
+    <div id="modal-content" class="modal"></div>
+  </div>
+
+  <!-- ═══ Context Menu (dynamic) ═══ -->
+  <div id="context-menu" class="context-menu hidden"></div>
+
+  <!-- ═══ Toast Container ═══ -->
+  <div id="toast-container"></div>
+
+  <script src="/shared/i18n.js"></script>
+  <script src="/shared/i18n-engine.js"></script>
+  <script src="/theme-toggle.js"></script>
+  <script>
+    (function syncHeaderHeight() {
+      if (document.documentElement.classList.contains('is-embedded-challenge')) return;
+      const header = document.querySelector('.site-header');
+      if (!header) return;
+
+      const update = () => {
+        document.documentElement.style.setProperty('--site-header-height', `${header.offsetHeight}px`);
+      };
+
+      update();
+      window.addEventListener('resize', update);
+    })();
+  </script>
+
+  <!-- ═══ Scripts ═══ -->
+  <!-- xterm.js -->
+  <script src="https://cdn.jsdelivr.net/npm/xterm@5.3.0/lib/xterm.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xterm-addon-fit@0.8.0/lib/xterm-addon-fit.js"></script>
+
+  <!-- Monaco Editor AMD loader -->
+  <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.44.0/min/vs/loader.js"></script>
+  <script>
+    require.config({
+      paths: { vs: 'https://cdn.jsdelivr.net/npm/monaco-editor@0.44.0/min/vs' }
+    });
+
+    require(['vs/editor/editor.main'], async function () {
+      // Monaco is ready → bootstrap the app
+      const { initApp } = await import('./js/main.js?v=' + Date.now());
+      initApp();
+    });
+  </script>
+</body>
+</html>

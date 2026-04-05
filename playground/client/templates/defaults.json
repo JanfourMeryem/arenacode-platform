@@ -1,0 +1,679 @@
+[
+  {
+    "id": "py-hello",
+    "name": "Hello World",
+    "description": "Basic Python output",
+    "language": "python",
+    "category": "Basics",
+    "level": "Beginner",
+    "tags": ["print", "starter"],
+    "featured": true,
+    "files": [
+      { "name": "main.py", "content": "print(\"Hello, World!\")\n" }
+    ]
+  },
+  {
+    "id": "py-input",
+    "name": "User Input",
+    "description": "Read and validate user input",
+    "language": "python",
+    "category": "Input/Output",
+    "level": "Beginner",
+    "tags": ["input", "strings"],
+    "files": [
+      { "name": "main.py", "content": "name = input(\"Name: \" ).strip()\nage_raw = input(\"Age: \" ).strip()\n\nif age_raw.isdigit():\n    age = int(age_raw)\n    print(f\"Hello {name}, next year you will be {age + 1}.\")\nelse:\n    print(\"Please enter a numeric age.\")\n" }
+    ]
+  },
+  {
+    "id": "py-sort",
+    "name": "Bubble Sort",
+    "description": "Classic bubble sort implementation",
+    "language": "python",
+    "category": "Algorithms",
+    "level": "Intermediate",
+    "tags": ["sorting", "loops"],
+    "files": [
+      { "name": "main.py", "content": "def bubble_sort(arr):\n    n = len(arr)\n    for i in range(n):\n        swapped = False\n        for j in range(0, n - i - 1):\n            if arr[j] > arr[j + 1]:\n                arr[j], arr[j + 1] = arr[j + 1], arr[j]\n                swapped = True\n        if not swapped:\n            break\n    return arr\n\nnums = [64, 34, 25, 12, 22, 11, 90]\nprint(bubble_sort(nums))\n" }
+    ]
+  },
+  {
+    "id": "py-oop-bank",
+    "name": "OOP Bank Account",
+    "description": "Small class with deposit and withdraw methods",
+    "language": "python",
+    "category": "OOP",
+    "level": "Intermediate",
+    "tags": ["class", "objects", "methods"],
+    "files": [
+      { "name": "main.py", "content": "class BankAccount:\n    def __init__(self, owner, balance=0):\n        self.owner = owner\n        self.balance = balance\n\n    def deposit(self, amount):\n        self.balance += amount\n\n    def withdraw(self, amount):\n        if amount > self.balance:\n            return False\n        self.balance -= amount\n        return True\n\nacc = BankAccount(\"Alice\", 100)\nacc.deposit(40)\nacc.withdraw(30)\nprint(acc.owner, acc.balance)\n" }
+    ]
+  },
+
+  {
+    "id": "java-hello",
+    "name": "Hello World",
+    "description": "Basic Java entry point",
+    "language": "java",
+    "category": "Basics",
+    "level": "Beginner",
+    "tags": ["main", "println"],
+    "featured": true,
+    "files": [
+      { "name": "Main.java", "content": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, World!\");\n    }\n}\n" }
+    ]
+  },
+  {
+    "id": "java-input",
+    "name": "Scanner Input",
+    "description": "Read values using Scanner",
+    "language": "java",
+    "category": "Input/Output",
+    "level": "Beginner",
+    "tags": ["scanner", "stdin"],
+    "files": [
+      { "name": "Main.java", "content": "import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n\n        System.out.print(\"Enter your name: \" );\n        String name = sc.nextLine();\n\n        System.out.print(\"Enter a number: \" );\n        int n = sc.nextInt();\n\n        System.out.println(\"Hello \" + name + \"! n * 2 = \" + (n * 2));\n    }\n}\n" }
+    ]
+  },
+  {
+    "id": "java-binary-search",
+    "name": "Binary Search",
+    "description": "Search target inside sorted array",
+    "language": "java",
+    "category": "Algorithms",
+    "level": "Intermediate",
+    "tags": ["search", "arrays"],
+    "files": [
+      { "name": "Main.java", "content": "public class Main {\n    static int binarySearch(int[] arr, int target) {\n        int lo = 0, hi = arr.length - 1;\n        while (lo <= hi) {\n            int mid = lo + (hi - lo) / 2;\n            if (arr[mid] == target) return mid;\n            if (arr[mid] < target) lo = mid + 1;\n            else hi = mid - 1;\n        }\n        return -1;\n    }\n\n    public static void main(String[] args) {\n        int[] arr = {2, 4, 7, 11, 19, 23, 31};\n        System.out.println(binarySearch(arr, 19));\n    }\n}\n" }
+    ]
+  },
+  {
+    "id": "java-map-frequency",
+    "name": "Word Frequency Map",
+    "description": "Count words using HashMap",
+    "language": "java",
+    "category": "Data Structures",
+    "level": "Intermediate",
+    "tags": ["hashmap", "strings"],
+    "files": [
+      { "name": "Main.java", "content": "import java.util.HashMap;\nimport java.util.Map;\n\npublic class Main {\n    public static void main(String[] args) {\n        String[] words = {\"to\", \"be\", \"or\", \"not\", \"to\", \"be\"};\n        Map<String, Integer> freq = new HashMap<>();\n\n        for (String w : words) {\n            freq.put(w, freq.getOrDefault(w, 0) + 1);\n        }\n\n        for (Map.Entry<String, Integer> e : freq.entrySet()) {\n            System.out.println(e.getKey() + \" -> \" + e.getValue());\n        }\n    }\n}\n" }
+    ]
+  },
+
+  {
+    "id": "c-hello",
+    "name": "Hello World",
+    "description": "Basic C program",
+    "language": "c",
+    "category": "Basics",
+    "level": "Beginner",
+    "tags": ["stdio", "main"],
+    "featured": true,
+    "files": [
+      { "name": "main.c", "content": "#include <stdio.h>\n\nint main(void) {\n    printf(\"Hello, World!\\n\");\n    return 0;\n}\n" }
+    ]
+  },
+  {
+    "id": "c-input",
+    "name": "Input with scanf",
+    "description": "Read values from stdin",
+    "language": "c",
+    "category": "Input/Output",
+    "level": "Beginner",
+    "tags": ["scanf", "printf"],
+    "files": [
+      { "name": "main.c", "content": "#include <stdio.h>\n\nint main(void) {\n    int age;\n    char name[40];\n\n    printf(\"Name: \" );\n    scanf(\"%39s\", name);\n\n    printf(\"Age: \" );\n    scanf(\"%d\", &age);\n\n    printf(\"Hello %s, age %d\\n\", name, age);\n    return 0;\n}\n" }
+    ]
+  },
+  {
+    "id": "c-fibonacci",
+    "name": "Fibonacci Sequence",
+    "description": "Print first N Fibonacci terms",
+    "language": "c",
+    "category": "Algorithms",
+    "level": "Intermediate",
+    "tags": ["loops", "sequence"],
+    "files": [
+      { "name": "main.c", "content": "#include <stdio.h>\n\nint main(void) {\n    int n = 12;\n    long a = 0, b = 1;\n\n    for (int i = 0; i < n; i++) {\n        printf(\"%ld \", a);\n        long next = a + b;\n        a = b;\n        b = next;\n    }\n\n    printf(\"\\n\");\n    return 0;\n}\n" }
+    ]
+  },
+  {
+    "id": "c-menu-calc",
+    "name": "Menu Calculator",
+    "description": "Calculator with switch menu",
+    "language": "c",
+    "category": "Control Flow",
+    "level": "Beginner",
+    "tags": ["switch", "math"],
+    "files": [
+      { "name": "main.c", "content": "#include <stdio.h>\n\nint main(void) {\n    int op;\n    double a, b;\n\n    printf(\"1:Add 2:Sub 3:Mul 4:Div\\n\");\n    scanf(\"%d\", &op);\n    scanf(\"%lf %lf\", &a, &b);\n\n    switch (op) {\n        case 1: printf(\"%.2f\\n\", a + b); break;\n        case 2: printf(\"%.2f\\n\", a - b); break;\n        case 3: printf(\"%.2f\\n\", a * b); break;\n        case 4: if (b != 0) printf(\"%.2f\\n\", a / b); else printf(\"Error\\n\"); break;\n        default: printf(\"Invalid\\n\");\n    }\n\n    return 0;\n}\n" }
+    ]
+  },
+
+  {
+    "id": "cpp-hello",
+    "name": "Hello World",
+    "description": "Basic C++ output",
+    "language": "cpp",
+    "category": "Basics",
+    "level": "Beginner",
+    "tags": ["iostream", "cout"],
+    "featured": true,
+    "files": [
+      { "name": "main.cpp", "content": "#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << \"Hello, World!\" << endl;\n    return 0;\n}\n" }
+    ]
+  },
+  {
+    "id": "cpp-input",
+    "name": "Input and Math",
+    "description": "Read input and compute simple expression",
+    "language": "cpp",
+    "category": "Input/Output",
+    "level": "Beginner",
+    "tags": ["cin", "getline"],
+    "files": [
+      { "name": "main.cpp", "content": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string name;\n    int n;\n\n    cout << \"Name: \";\n    getline(cin, name);\n    cout << \"Number: \";\n    cin >> n;\n\n    cout << \"Hello \" << name << \" -> n^2 = \" << (n * n) << endl;\n    return 0;\n}\n" }
+    ]
+  },
+  {
+    "id": "cpp-stl-vector",
+    "name": "Vector + Algorithms",
+    "description": "Sort and aggregate values using STL",
+    "language": "cpp",
+    "category": "STL",
+    "level": "Intermediate",
+    "tags": ["vector", "sort", "accumulate"],
+    "files": [
+      { "name": "main.cpp", "content": "#include <algorithm>\n#include <iostream>\n#include <numeric>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v = {9, 2, 6, 3, 1, 8};\n    sort(v.begin(), v.end());\n\n    for (int x : v) cout << x << ' ';\n    cout << endl;\n\n    cout << \"Sum: \" << accumulate(v.begin(), v.end(), 0) << endl;\n    return 0;\n}\n" }
+    ]
+  },
+  {
+    "id": "cpp-point-class",
+    "name": "Point Class",
+    "description": "Small class with distance computation",
+    "language": "cpp",
+    "category": "OOP",
+    "level": "Intermediate",
+    "tags": ["class", "methods"],
+    "files": [
+      { "name": "main.cpp", "content": "#include <cmath>\n#include <iostream>\nusing namespace std;\n\nclass Point {\npublic:\n    Point(double x, double y) : x_(x), y_(y) {}\n\n    double distanceTo(const Point& other) const {\n        double dx = x_ - other.x_;\n        double dy = y_ - other.y_;\n        return sqrt(dx * dx + dy * dy);\n    }\n\nprivate:\n    double x_;\n    double y_;\n};\n\nint main() {\n    Point a(1, 2), b(4, 6);\n    cout << a.distanceTo(b) << endl;\n    return 0;\n}\n" }
+    ]
+  },
+
+  {
+    "id": "cs-hello",
+    "name": "Hello World",
+    "description": "Basic C# console app",
+    "language": "csharp",
+    "category": "Basics",
+    "level": "Beginner",
+    "tags": ["Console", "Main"],
+    "featured": true,
+    "files": [
+      { "name": "Program.cs", "content": "using System;\n\nclass Program {\n    static void Main() {\n        Console.WriteLine(\"Hello, World!\");\n    }\n}\n" }
+    ]
+  },
+  {
+    "id": "cs-input",
+    "name": "Console Input",
+    "description": "Read values and print result",
+    "language": "csharp",
+    "category": "Input/Output",
+    "level": "Beginner",
+    "tags": ["ReadLine", "Parse"],
+    "files": [
+      { "name": "Program.cs", "content": "using System;\n\nclass Program {\n    static void Main() {\n        Console.Write(\"Name: \" );\n        string name = Console.ReadLine();\n\n        Console.Write(\"Number: \" );\n        int n = int.Parse(Console.ReadLine());\n\n        Console.WriteLine(\"Hello \" + name + \" => \" + (n * 3));\n    }\n}\n" }
+    ]
+  },
+  {
+    "id": "cs-linq",
+    "name": "LINQ Dashboard",
+    "description": "Filter and aggregate with LINQ",
+    "language": "csharp",
+    "category": "LINQ",
+    "level": "Intermediate",
+    "tags": ["linq", "where", "sum"],
+    "files": [
+      { "name": "Program.cs", "content": "using System;\nusing System.Linq;\n\nclass Program {\n    static void Main() {\n        int[] values = {5, 3, 8, 1, 6, 2};\n\n        var evens = values.Where(v => v % 2 == 0).ToArray();\n        Console.WriteLine(\"Evens: \" + string.Join(\", \", evens));\n        Console.WriteLine(\"Sum: \" + values.Sum());\n    }\n}\n" }
+    ]
+  },
+  {
+    "id": "cs-async-countdown",
+    "name": "Async Countdown",
+    "description": "Countdown using async/await",
+    "language": "csharp",
+    "category": "Async",
+    "level": "Intermediate",
+    "tags": ["async", "await", "Task.Delay"],
+    "files": [
+      { "name": "Program.cs", "content": "using System;\nusing System.Threading.Tasks;\n\nclass Program {\n    static async Task Main() {\n        for (int i = 3; i >= 1; i--) {\n            Console.WriteLine(\"Starting in \" + i);\n            await Task.Delay(500);\n        }\n\n        Console.WriteLine(\"Go!\");\n    }\n}\n" }
+    ]
+  },
+
+  {
+    "id": "php-hello",
+    "name": "Hello World",
+    "description": "Basic PHP CLI output",
+    "language": "php",
+    "category": "Basics",
+    "level": "Beginner",
+    "tags": ["echo", "starter"],
+    "featured": true,
+    "files": [
+      { "name": "index.php", "content": "<?php\necho \"Hello, World!\\n\";\n" }
+    ]
+  },
+  {
+    "id": "php-input",
+    "name": "STDIN Input",
+    "description": "Read from stdin and compute factorial",
+    "language": "php",
+    "category": "Input/Output",
+    "level": "Beginner",
+    "tags": ["stdin", "functions"],
+    "files": [
+      { "name": "index.php", "content": "<?php\nfunction factorial($n) {\n    return $n <= 1 ? 1 : $n * factorial($n - 1);\n}\n\necho \"Enter a number: \";\n$n = intval(trim(fgets(STDIN)));\necho \"Factorial: \" . factorial($n) . \"\\n\";\n" }
+    ]
+  },
+  {
+    "id": "php-arrays",
+    "name": "Array Toolkit",
+    "description": "Sort, map, and filter arrays",
+    "language": "php",
+    "category": "Data Processing",
+    "level": "Intermediate",
+    "tags": ["array_map", "array_filter", "sort"],
+    "files": [
+      { "name": "index.php", "content": "<?php\n$data = [5, 1, 8, 3, 2, 9];\nsort($data);\n\n$double = array_map(fn($x) => $x * 2, $data);\n$gt10 = array_filter($double, fn($x) => $x > 10);\n\necho \"Sorted: \" . implode(', ', $data) . \"\\n\";\necho \"Double: \" . implode(', ', $double) . \"\\n\";\necho \"Greater than 10: \" . implode(', ', $gt10) . \"\\n\";\n" }
+    ]
+  },
+  {
+    "id": "php-json-report",
+    "name": "JSON Sales Report",
+    "description": "Decode JSON and print totals",
+    "language": "php",
+    "category": "Data Processing",
+    "level": "Intermediate",
+    "tags": ["json_decode", "loop", "aggregation"],
+    "files": [
+      { "name": "index.php", "content": "<?php\n$json = '[{\"item\":\"Book\",\"qty\":2,\"price\":12.5},{\"item\":\"Pen\",\"qty\":5,\"price\":1.2}]';\n$rows = json_decode($json, true);\n\n$total = 0;\nforeach ($rows as $row) {\n    $line = $row['qty'] * $row['price'];\n    $total += $line;\n    echo $row['item'] . \" => \" . $line . \"\\n\";\n}\n\necho \"Total: \" . $total . \"\\n\";\n" }
+    ]
+  },
+
+  {
+    "id": "py-modular-calculator",
+    "name": "Modular Calculator",
+    "description": "Multi-file project: operations module, validator, and main entry point",
+    "language": "python",
+    "category": "Modular",
+    "level": "Intermediate",
+    "tags": ["import", "modules", "multi-file"],
+    "featured": true,
+    "files": [
+      { "name": "main.py", "content": "from operations import add, subtract, multiply, divide\nfrom validator import validate_number\n\ndef main():\n    print(\"=== Modular Calculator ===\")\n    print(f\"add(10, 3)       = {add(10, 3)}\")\n    print(f\"subtract(10, 3)  = {subtract(10, 3)}\")\n    print(f\"multiply(10, 3)  = {multiply(10, 3)}\")\n    print(f\"divide(10, 3)    = {divide(10, 3):.2f}\")\n    print(f\"divide(10, 0)    = {divide(10, 0)}\")\n    print()\n\n    test_values = [\"42\", \"hello\", \"3.14\", \"\", \"-7\"]\n    for v in test_values:\n        result = validate_number(v)\n        print(f\"validate('{v}') -> {result}\")\n\nmain()\n" },
+      { "name": "operations.py", "content": "\"\"\"Basic arithmetic operations module.\"\"\"\n\ndef add(a, b):\n    return a + b\n\ndef subtract(a, b):\n    return a - b\n\ndef multiply(a, b):\n    return a * b\n\ndef divide(a, b):\n    if b == 0:\n        return \"Error: division by zero\"\n    return a / b\n" },
+      { "name": "validator.py", "content": "\"\"\"Input validation helpers.\"\"\"\n\ndef validate_number(value):\n    \"\"\"Check if a string can be converted to a number.\"\"\"\n    if not value or not value.strip():\n        return (False, \"empty input\")\n    try:\n        num = float(value)\n        return (True, num)\n    except ValueError:\n        return (False, f\"'{value}' is not a number\")\n" }
+    ]
+  },
+  {
+    "id": "py-modular-student",
+    "name": "Student Manager",
+    "description": "Multi-file OOP: Student model, GradeBook service, and main app",
+    "language": "python",
+    "category": "Modular",
+    "level": "Intermediate",
+    "tags": ["class", "modules", "multi-file", "OOP"],
+    "files": [
+      { "name": "main.py", "content": "from student import Student\nfrom gradebook import GradeBook\n\ndef main():\n    book = GradeBook()\n\n    book.add_student(Student(\"Alice\", [85, 92, 78]))\n    book.add_student(Student(\"Bob\", [70, 65, 80]))\n    book.add_student(Student(\"Charlie\", [95, 98, 100]))\n\n    print(\"=== Grade Book ===\")\n    book.print_report()\n\n    print(f\"\\nClass average: {book.class_average():.1f}\")\n    print(f\"Top student:   {book.top_student().name}\")\n\nmain()\n" },
+      { "name": "student.py", "content": "\"\"\"Student data model.\"\"\"\n\nclass Student:\n    def __init__(self, name, grades=None):\n        self.name = name\n        self.grades = grades or []\n\n    def average(self):\n        if not self.grades:\n            return 0.0\n        return sum(self.grades) / len(self.grades)\n\n    def highest(self):\n        return max(self.grades) if self.grades else 0\n\n    def __repr__(self):\n        return f\"Student({self.name}, avg={self.average():.1f})\"\n" },
+      { "name": "gradebook.py", "content": "\"\"\"GradeBook service — manages a list of students.\"\"\"\n\nclass GradeBook:\n    def __init__(self):\n        self.students = []\n\n    def add_student(self, student):\n        self.students.append(student)\n\n    def class_average(self):\n        if not self.students:\n            return 0.0\n        return sum(s.average() for s in self.students) / len(self.students)\n\n    def top_student(self):\n        return max(self.students, key=lambda s: s.average())\n\n    def print_report(self):\n        for s in self.students:\n            print(f\"  {s.name:10s}  avg={s.average():5.1f}  best={s.highest()}\")\n" }
+    ]
+  },
+  {
+    "id": "py-modular-game",
+    "name": "Text Adventure",
+    "description": "Multi-file game: world map, player, game engine, and main loop",
+    "language": "python",
+    "category": "Modular",
+    "level": "Advanced",
+    "tags": ["game", "modules", "multi-file", "OOP"],
+    "files": [
+      { "name": "main.py", "content": "from player import Player\nfrom world import World\nfrom engine import GameEngine\n\ndef main():\n    world = World()\n    player = Player(\"Hero\")\n    engine = GameEngine(world, player)\n\n    # Simulate a short adventure\n    engine.look()\n    engine.move(\"north\")\n    engine.look()\n    engine.pickup()\n    engine.move(\"east\")\n    engine.look()\n    engine.show_inventory()\n\nmain()\n" },
+      { "name": "player.py", "content": "\"\"\"Player entity with inventory.\"\"\"\n\nclass Player:\n    def __init__(self, name):\n        self.name = name\n        self.inventory = []\n        self.position = \"entrance\"\n\n    def add_item(self, item):\n        self.inventory.append(item)\n        return f\"{self.name} picked up: {item}\"\n\n    def has_item(self, item):\n        return item in self.inventory\n\n    def show_inventory(self):\n        if not self.inventory:\n            return \"Inventory is empty.\"\n        return \"Inventory: \" + \", \".join(self.inventory)\n" },
+      { "name": "world.py", "content": "\"\"\"World map definition.\"\"\"\n\nROOMS = {\n    \"entrance\": {\n        \"description\": \"You stand at the dungeon entrance. A torch flickers on the wall.\",\n        \"items\": [\"torch\"],\n        \"exits\": {\"north\": \"hallway\"},\n    },\n    \"hallway\": {\n        \"description\": \"A long dark hallway stretches before you.\",\n        \"items\": [\"rusty key\"],\n        \"exits\": {\"south\": \"entrance\", \"east\": \"treasure_room\"},\n    },\n    \"treasure_room\": {\n        \"description\": \"A gleaming chest sits in the center of the room!\",\n        \"items\": [\"gold coin\", \"ancient scroll\"],\n        \"exits\": {\"west\": \"hallway\"},\n    },\n}\n\nclass World:\n    def __init__(self):\n        self.rooms = {k: dict(v) for k, v in ROOMS.items()}\n        for room in self.rooms.values():\n            room[\"items\"] = list(room[\"items\"])\n\n    def get_room(self, room_id):\n        return self.rooms.get(room_id)\n\n    def remove_item(self, room_id, item):\n        room = self.rooms.get(room_id)\n        if room and item in room[\"items\"]:\n            room[\"items\"].remove(item)\n            return True\n        return False\n" },
+      { "name": "engine.py", "content": "\"\"\"Game engine — ties player actions to the world.\"\"\"\n\nclass GameEngine:\n    def __init__(self, world, player):\n        self.world = world\n        self.player = player\n\n    def look(self):\n        room = self.world.get_room(self.player.position)\n        if not room:\n            print(\"You are nowhere...\")\n            return\n        print(f\"\\n[{self.player.position.upper()}]\")\n        print(room[\"description\"])\n        if room[\"items\"]:\n            print(\"You see: \" + \", \".join(room[\"items\"]))\n        exits = \", \".join(room[\"exits\"].keys())\n        print(f\"Exits: {exits}\")\n\n    def move(self, direction):\n        room = self.world.get_room(self.player.position)\n        if not room or direction not in room[\"exits\"]:\n            print(f\"Can't go {direction}.\")\n            return\n        self.player.position = room[\"exits\"][direction]\n        print(f\"-> Moved {direction}.\")\n\n    def pickup(self):\n        room = self.world.get_room(self.player.position)\n        if not room or not room[\"items\"]:\n            print(\"Nothing to pick up here.\")\n            return\n        item = room[\"items\"][0]\n        self.world.remove_item(self.player.position, item)\n        print(self.player.add_item(item))\n\n    def show_inventory(self):\n        print(self.player.show_inventory())\n" }
+    ]
+  },
+
+  {
+    "id": "java-modular-shop",
+    "name": "Modular Shop",
+    "description": "Multi-file: Product model, Inventory service, and entry point",
+    "language": "java",
+    "category": "Modular",
+    "level": "Intermediate",
+    "tags": ["class", "import", "multi-file", "OOP"],
+    "featured": true,
+    "files": [
+      { "name": "Main.java", "content": "public class Main {\n    public static void main(String[] args) {\n        Inventory shop = new Inventory();\n\n        shop.addProduct(new Product(\"Laptop\", 999.99, 5));\n        shop.addProduct(new Product(\"Mouse\", 29.50, 20));\n        shop.addProduct(new Product(\"Keyboard\", 79.00, 12));\n\n        System.out.println(\"=== Shop Inventory ===\");\n        shop.printAll();\n\n        System.out.println(\"\\nTotal value: $\" + String.format(\"%.2f\", shop.totalValue()));\n\n        Product found = shop.findByName(\"Mouse\");\n        if (found != null) {\n            System.out.println(\"\\nFound: \" + found);\n        }\n    }\n}\n" },
+      { "name": "Product.java", "content": "/**\n * Simple product data class.\n */\npublic class Product {\n    private String name;\n    private double price;\n    private int quantity;\n\n    public Product(String name, double price, int quantity) {\n        this.name = name;\n        this.price = price;\n        this.quantity = quantity;\n    }\n\n    public String getName()  { return name; }\n    public double getPrice() { return price; }\n    public int getQuantity() { return quantity; }\n\n    public double totalValue() {\n        return price * quantity;\n    }\n\n    @Override\n    public String toString() {\n        return name + \" ($\" + String.format(\"%.2f\", price) + \" x \" + quantity + \")\";\n    }\n}\n" },
+      { "name": "Inventory.java", "content": "import java.util.ArrayList;\nimport java.util.List;\n\n/**\n * Inventory manager: stores products and provides queries.\n */\npublic class Inventory {\n    private List<Product> products = new ArrayList<>();\n\n    public void addProduct(Product p) {\n        products.add(p);\n    }\n\n    public Product findByName(String name) {\n        for (Product p : products) {\n            if (p.getName().equalsIgnoreCase(name)) {\n                return p;\n            }\n        }\n        return null;\n    }\n\n    public double totalValue() {\n        double sum = 0;\n        for (Product p : products) {\n            sum += p.totalValue();\n        }\n        return sum;\n    }\n\n    public void printAll() {\n        for (Product p : products) {\n            System.out.println(\"  \" + p);\n        }\n    }\n}\n" }
+    ]
+  },
+  {
+    "id": "java-modular-shapes",
+    "name": "Shape Hierarchy",
+    "description": "Multi-file: abstract Shape, Circle, Rectangle, and demo runner",
+    "language": "java",
+    "category": "Modular",
+    "level": "Intermediate",
+    "tags": ["abstract", "inheritance", "multi-file", "OOP"],
+    "files": [
+      { "name": "Main.java", "content": "public class Main {\n    public static void main(String[] args) {\n        Shape[] shapes = {\n            new Circle(5),\n            new Rectangle(4, 7),\n            new Circle(3),\n            new Rectangle(10, 2)\n        };\n\n        System.out.println(\"=== Shape Gallery ===\");\n        double totalArea = 0;\n        for (Shape s : shapes) {\n            s.describe();\n            totalArea += s.area();\n        }\n        System.out.printf(\"\\nTotal area: %.2f%n\", totalArea);\n    }\n}\n" },
+      { "name": "Shape.java", "content": "/**\n * Abstract base class for all shapes.\n */\npublic abstract class Shape {\n    public abstract double area();\n    public abstract double perimeter();\n\n    public void describe() {\n        System.out.printf(\"  %-12s  area=%.2f  perimeter=%.2f%n\",\n            getClass().getSimpleName(), area(), perimeter());\n    }\n}\n" },
+      { "name": "Circle.java", "content": "public class Circle extends Shape {\n    private double radius;\n\n    public Circle(double radius) {\n        this.radius = radius;\n    }\n\n    @Override\n    public double area() {\n        return Math.PI * radius * radius;\n    }\n\n    @Override\n    public double perimeter() {\n        return 2 * Math.PI * radius;\n    }\n}\n" },
+      { "name": "Rectangle.java", "content": "public class Rectangle extends Shape {\n    private double width;\n    private double height;\n\n    public Rectangle(double width, double height) {\n        this.width = width;\n        this.height = height;\n    }\n\n    @Override\n    public double area() {\n        return width * height;\n    }\n\n    @Override\n    public double perimeter() {\n        return 2 * (width + height);\n    }\n}\n" }
+    ]
+  },
+
+  {
+    "id": "c-modular-math",
+    "name": "Math Library",
+    "description": "Multi-file: header + implementation pattern with custom math utils",
+    "language": "c",
+    "category": "Modular",
+    "level": "Intermediate",
+    "tags": ["header", "include", "multi-file"],
+    "featured": true,
+    "files": [
+      { "name": "main.c", "content": "#include <stdio.h>\n#include \"mathutils.h\"\n\nint main(void) {\n    printf(\"=== Math Library Demo ===\\n\");\n    printf(\"factorial(6)  = %d\\n\", factorial(6));\n    printf(\"power(2, 10)  = %d\\n\", power(2, 10));\n    printf(\"gcd(48, 18)   = %d\\n\", gcd(48, 18));\n    printf(\"is_prime(17)  = %s\\n\", is_prime(17) ? \"yes\" : \"no\");\n    printf(\"is_prime(20)  = %s\\n\", is_prime(20) ? \"yes\" : \"no\");\n    printf(\"clamp(15,0,10)= %d\\n\", clamp(15, 0, 10));\n    return 0;\n}\n" },
+      { "name": "mathutils.h", "content": "#ifndef MATHUTILS_H\n#define MATHUTILS_H\n\nint factorial(int n);\nint power(int base, int exp);\nint gcd(int a, int b);\nint is_prime(int n);\nint clamp(int value, int lo, int hi);\n\n#endif\n" },
+      { "name": "mathutils.c", "content": "#include \"mathutils.h\"\n\nint factorial(int n) {\n    if (n <= 1) return 1;\n    return n * factorial(n - 1);\n}\n\nint power(int base, int exp) {\n    int result = 1;\n    for (int i = 0; i < exp; i++) {\n        result *= base;\n    }\n    return result;\n}\n\nint gcd(int a, int b) {\n    while (b != 0) {\n        int temp = b;\n        b = a % b;\n        a = temp;\n    }\n    return a;\n}\n\nint is_prime(int n) {\n    if (n < 2) return 0;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return 0;\n    }\n    return 1;\n}\n\nint clamp(int value, int lo, int hi) {\n    if (value < lo) return lo;\n    if (value > hi) return hi;\n    return value;\n}\n" }
+    ]
+  },
+  {
+    "id": "c-modular-struct",
+    "name": "Struct + Linked List",
+    "description": "Multi-file: linked list data structure with header, implementation, and driver",
+    "language": "c",
+    "category": "Modular",
+    "level": "Advanced",
+    "tags": ["struct", "pointer", "multi-file", "data-structure"],
+    "files": [
+      { "name": "main.c", "content": "#include <stdio.h>\n#include \"list.h\"\n\nint main(void) {\n    List *list = list_create();\n\n    list_push(list, 10);\n    list_push(list, 20);\n    list_push(list, 30);\n    list_push(list, 40);\n\n    printf(\"List (%d items): \", list_size(list));\n    list_print(list);\n\n    printf(\"Pop: %d\\n\", list_pop(list));\n    printf(\"After pop: \");\n    list_print(list);\n\n    list_free(list);\n    printf(\"Done.\\n\");\n    return 0;\n}\n" },
+      { "name": "list.h", "content": "#ifndef LIST_H\n#define LIST_H\n\ntypedef struct Node {\n    int data;\n    struct Node *next;\n} Node;\n\ntypedef struct {\n    Node *head;\n    int size;\n} List;\n\nList *list_create(void);\nvoid list_push(List *l, int value);\nint  list_pop(List *l);\nint  list_size(List *l);\nvoid list_print(List *l);\nvoid list_free(List *l);\n\n#endif\n" },
+      { "name": "list.c", "content": "#include <stdio.h>\n#include <stdlib.h>\n#include \"list.h\"\n\nList *list_create(void) {\n    List *l = malloc(sizeof(List));\n    l->head = NULL;\n    l->size = 0;\n    return l;\n}\n\nvoid list_push(List *l, int value) {\n    Node *node = malloc(sizeof(Node));\n    node->data = value;\n    node->next = l->head;\n    l->head = node;\n    l->size++;\n}\n\nint list_pop(List *l) {\n    if (!l->head) return -1;\n    Node *top = l->head;\n    int value = top->data;\n    l->head = top->next;\n    free(top);\n    l->size--;\n    return value;\n}\n\nint list_size(List *l) {\n    return l->size;\n}\n\nvoid list_print(List *l) {\n    Node *cur = l->head;\n    while (cur) {\n        printf(\"%d \", cur->data);\n        cur = cur->next;\n    }\n    printf(\"\\n\");\n}\n\nvoid list_free(List *l) {\n    Node *cur = l->head;\n    while (cur) {\n        Node *tmp = cur;\n        cur = cur->next;\n        free(tmp);\n    }\n    free(l);\n}\n" }
+    ]
+  },
+
+  {
+    "id": "cpp-modular-vector",
+    "name": "Custom Vector Class",
+    "description": "Multi-file: Vec2D header + implementation, and a main demo",
+    "language": "cpp",
+    "category": "Modular",
+    "level": "Intermediate",
+    "tags": ["class", "header", "multi-file", "OOP"],
+    "featured": true,
+    "files": [
+      { "name": "main.cpp", "content": "#include <iostream>\n#include \"Vec2D.h\"\nusing namespace std;\n\nint main() {\n    Vec2D a(3, 4);\n    Vec2D b(1, 2);\n\n    cout << \"=== Vec2D Demo ===\" << endl;\n    cout << \"a = \" << a << endl;\n    cout << \"b = \" << b << endl;\n    cout << \"a + b = \" << (a + b) << endl;\n    cout << \"a - b = \" << (a - b) << endl;\n    cout << \"a * 2 = \" << (a * 2) << endl;\n    cout << \"a dot b = \" << a.dot(b) << endl;\n    cout << \"|a| = \" << a.magnitude() << endl;\n    cout << \"a normalized = \" << a.normalized() << endl;\n    return 0;\n}\n" },
+      { "name": "Vec2D.h", "content": "#ifndef VEC2D_H\n#define VEC2D_H\n\n#include <iostream>\n\nclass Vec2D {\npublic:\n    double x, y;\n\n    Vec2D(double x = 0, double y = 0);\n\n    Vec2D operator+(const Vec2D& other) const;\n    Vec2D operator-(const Vec2D& other) const;\n    Vec2D operator*(double scalar) const;\n\n    double dot(const Vec2D& other) const;\n    double magnitude() const;\n    Vec2D normalized() const;\n\n    friend std::ostream& operator<<(std::ostream& os, const Vec2D& v);\n};\n\n#endif\n" },
+      { "name": "Vec2D.cpp", "content": "#include \"Vec2D.h\"\n#include <cmath>\n\nVec2D::Vec2D(double x, double y) : x(x), y(y) {}\n\nVec2D Vec2D::operator+(const Vec2D& other) const {\n    return Vec2D(x + other.x, y + other.y);\n}\n\nVec2D Vec2D::operator-(const Vec2D& other) const {\n    return Vec2D(x - other.x, y - other.y);\n}\n\nVec2D Vec2D::operator*(double scalar) const {\n    return Vec2D(x * scalar, y * scalar);\n}\n\ndouble Vec2D::dot(const Vec2D& other) const {\n    return x * other.x + y * other.y;\n}\n\ndouble Vec2D::magnitude() const {\n    return sqrt(x * x + y * y);\n}\n\nVec2D Vec2D::normalized() const {\n    double m = magnitude();\n    return m > 0 ? Vec2D(x / m, y / m) : Vec2D(0, 0);\n}\n\nstd::ostream& operator<<(std::ostream& os, const Vec2D& v) {\n    os << \"(\" << v.x << \", \" << v.y << \")\";\n    return os;\n}\n" }
+    ]
+  },
+  {
+    "id": "cpp-modular-rpg",
+    "name": "RPG Character System",
+    "description": "Multi-file: Character base, Warrior + Mage subclasses, battle simulator",
+    "language": "cpp",
+    "category": "Modular",
+    "level": "Advanced",
+    "tags": ["inheritance", "polymorphism", "multi-file", "OOP"],
+    "files": [
+      { "name": "main.cpp", "content": "#include <iostream>\n#include \"Warrior.h\"\n#include \"Mage.h\"\n#include \"Battle.h\"\nusing namespace std;\n\nint main() {\n    Warrior w(\"Thorin\", 120, 25);\n    Mage m(\"Gandalf\", 80, 40);\n\n    cout << \"=== RPG Battle Simulator ===\" << endl;\n    w.describe();\n    m.describe();\n    cout << endl;\n\n    Battle battle(w, m);\n    battle.run();\n    return 0;\n}\n" },
+      { "name": "Character.h", "content": "#ifndef CHARACTER_H\n#define CHARACTER_H\n\n#include <string>\n#include <iostream>\n\nclass Character {\nprotected:\n    std::string name_;\n    int hp_;\n    int maxHp_;\n    int attack_;\n\npublic:\n    Character(const std::string& name, int hp, int attack)\n        : name_(name), hp_(hp), maxHp_(hp), attack_(attack) {}\n\n    virtual ~Character() = default;\n\n    virtual int dealDamage() const { return attack_; }\n    virtual std::string className() const = 0;\n\n    void takeDamage(int dmg) {\n        hp_ -= dmg;\n        if (hp_ < 0) hp_ = 0;\n    }\n\n    bool isAlive() const { return hp_ > 0; }\n    const std::string& name() const { return name_; }\n    int hp() const { return hp_; }\n\n    void describe() const {\n        std::cout << className() << \" \" << name_\n                  << \" [HP: \" << hp_ << \"/\" << maxHp_\n                  << \", ATK: \" << attack_ << \"]\" << std::endl;\n    }\n};\n\n#endif\n" },
+      { "name": "Warrior.h", "content": "#ifndef WARRIOR_H\n#define WARRIOR_H\n\n#include \"Character.h\"\n\nclass Warrior : public Character {\npublic:\n    Warrior(const std::string& name, int hp, int attack)\n        : Character(name, hp, attack) {}\n\n    int dealDamage() const override {\n        // Warriors have a 30% chance to crit (x2)\n        return attack_ * (((hp_ + attack_) % 3 == 0) ? 2 : 1);\n    }\n\n    std::string className() const override { return \"[Warrior]\"; }\n};\n\n#endif\n" },
+      { "name": "Mage.h", "content": "#ifndef MAGE_H\n#define MAGE_H\n\n#include \"Character.h\"\n\nclass Mage : public Character {\npublic:\n    Mage(const std::string& name, int hp, int attack)\n        : Character(name, hp, attack) {}\n\n    int dealDamage() const override {\n        // Mages deal consistent magical damage + bonus when low HP\n        return attack_ + (hp_ < maxHp_ / 2 ? 10 : 0);\n    }\n\n    std::string className() const override { return \"[Mage]\"; }\n};\n\n#endif\n" },
+      { "name": "Battle.h", "content": "#ifndef BATTLE_H\n#define BATTLE_H\n\n#include \"Character.h\"\n\nclass Battle {\npublic:\n    Battle(Character& a, Character& b) : a_(a), b_(b) {}\n    void run();\n\nprivate:\n    Character& a_;\n    Character& b_;\n};\n\n#endif\n" },
+      { "name": "Battle.cpp", "content": "#include \"Battle.h\"\n#include <iostream>\nusing namespace std;\n\nvoid Battle::run() {\n    int round = 1;\n    while (a_.isAlive() && b_.isAlive()) {\n        cout << \"-- Round \" << round << \" --\" << endl;\n\n        int dmgA = a_.dealDamage();\n        b_.takeDamage(dmgA);\n        cout << \"  \" << a_.name() << \" hits \" << b_.name()\n             << \" for \" << dmgA << \" dmg (HP: \" << b_.hp() << \")\" << endl;\n\n        if (!b_.isAlive()) break;\n\n        int dmgB = b_.dealDamage();\n        a_.takeDamage(dmgB);\n        cout << \"  \" << b_.name() << \" hits \" << a_.name()\n             << \" for \" << dmgB << \" dmg (HP: \" << a_.hp() << \")\" << endl;\n\n        round++;\n    }\n\n    cout << endl;\n    if (a_.isAlive()) {\n        cout << a_.name() << \" wins!\" << endl;\n    } else {\n        cout << b_.name() << \" wins!\" << endl;\n    }\n}\n" }
+    ]
+  },
+
+  {
+    "id": "cs-modular-todo",
+    "name": "Todo App",
+    "description": "Multi-file: Task model, TaskManager service, and CLI entry point",
+    "language": "csharp",
+    "category": "Modular",
+    "level": "Intermediate",
+    "tags": ["class", "List", "multi-file", "OOP"],
+    "featured": true,
+    "files": [
+      { "name": "Program.cs", "content": "using System;\n\nclass Program {\n    static void Main() {\n        var manager = new TaskManager();\n\n        manager.Add(\"Buy groceries\");\n        manager.Add(\"Write report\");\n        manager.Add(\"Fix login bug\");\n        manager.Add(\"Call dentist\");\n\n        manager.Complete(1);  // \"Write report\"\n        manager.Complete(2);  // \"Fix login bug\"\n\n        Console.WriteLine(\"=== Todo List ===\");\n        manager.PrintAll();\n\n        Console.WriteLine($\"\\nPending:   {manager.PendingCount}\");\n        Console.WriteLine($\"Completed: {manager.CompletedCount}\");\n    }\n}\n" },
+      { "name": "Task.cs", "content": "/// <summary>\n/// Represents a single todo task.\n/// </summary>\npublic class Task {\n    public int Id { get; }\n    public string Title { get; }\n    public bool IsDone { get; private set; }\n\n    public Task(int id, string title) {\n        Id = id;\n        Title = title;\n        IsDone = false;\n    }\n\n    public void MarkComplete() {\n        IsDone = true;\n    }\n\n    public override string ToString() {\n        string status = IsDone ? \"done\" : \"todo\";\n        return $\"  [{status}] #{Id} {Title}\";\n    }\n}\n" },
+      { "name": "TaskManager.cs", "content": "using System;\nusing System.Collections.Generic;\nusing System.Linq;\n\n/// <summary>\n/// Manages a list of tasks.\n/// </summary>\npublic class TaskManager {\n    private List<Task> tasks = new List<Task>();\n    private int nextId = 0;\n\n    public void Add(string title) {\n        tasks.Add(new Task(nextId++, title));\n    }\n\n    public void Complete(int id) {\n        var task = tasks.FirstOrDefault(t => t.Id == id);\n        task?.MarkComplete();\n    }\n\n    public int PendingCount => tasks.Count(t => !t.IsDone);\n    public int CompletedCount => tasks.Count(t => t.IsDone);\n\n    public void PrintAll() {\n        foreach (var t in tasks) {\n            Console.WriteLine(t);\n        }\n    }\n}\n" }
+    ]
+  },
+
+  {
+    "id": "php-modular-api",
+    "name": "Modular CLI App",
+    "description": "Multi-file: Config, Logger, UserService with require/include pattern",
+    "language": "php",
+    "category": "Modular",
+    "level": "Intermediate",
+    "tags": ["require", "class", "multi-file", "OOP"],
+    "featured": true,
+    "files": [
+      { "name": "index.php", "content": "<?php\nrequire_once 'config.php';\nrequire_once 'Logger.php';\nrequire_once 'UserService.php';\n\n$logger = new Logger(APP_NAME);\n$userService = new UserService($logger);\n\n$logger->info(\"Application started (v\" . APP_VERSION . \")\");\n\n$userService->register(\"alice\", \"alice@example.com\");\n$userService->register(\"bob\", \"bob@example.com\");\n$userService->register(\"alice\", \"dupe@example.com\"); // duplicate\n\necho \"\\n=== All Users ===\\n\";\n$userService->listAll();\n\necho \"\\nSearch 'bob': \";\n$found = $userService->find(\"bob\");\necho $found ? $found['email'] : 'not found';\necho \"\\n\";\n" },
+      { "name": "config.php", "content": "<?php\n/**\n * Application configuration constants.\n */\ndefine('APP_NAME', 'MyApp');\ndefine('APP_VERSION', '1.0.0');\ndefine('MAX_USERS', 100);\n" },
+      { "name": "Logger.php", "content": "<?php\n/**\n * Simple logger with timestamp and app name prefix.\n */\nclass Logger {\n    private string $appName;\n\n    public function __construct(string $appName) {\n        $this->appName = $appName;\n    }\n\n    public function info(string $msg): void {\n        echo \"[{$this->appName}] INFO: {$msg}\\n\";\n    }\n\n    public function warn(string $msg): void {\n        echo \"[{$this->appName}] WARN: {$msg}\\n\";\n    }\n\n    public function error(string $msg): void {\n        echo \"[{$this->appName}] ERROR: {$msg}\\n\";\n    }\n}\n" },
+      { "name": "UserService.php", "content": "<?php\n/**\n * Manages user registration and lookup.\n */\nclass UserService {\n    private array $users = [];\n    private Logger $logger;\n\n    public function __construct(Logger $logger) {\n        $this->logger = $logger;\n    }\n\n    public function register(string $name, string $email): bool {\n        if (isset($this->users[$name])) {\n            $this->logger->warn(\"User '$name' already exists.\");\n            return false;\n        }\n        $this->users[$name] = ['name' => $name, 'email' => $email];\n        $this->logger->info(\"Registered user: $name ($email)\");\n        return true;\n    }\n\n    public function find(string $name): ?array {\n        return $this->users[$name] ?? null;\n    }\n\n    public function listAll(): void {\n        foreach ($this->users as $user) {\n            echo \"  {$user['name']} <{$user['email']}>\\n\";\n        }\n    }\n}\n" }
+    ]
+  },
+
+  {
+    "id": "js-hello",
+    "title": "Hello World",
+    "description": "Simple console output with Node.js",
+    "language": "javascript",
+    "category": "Basics",
+    "level": "Beginner",
+    "tags": ["console", "hello"],
+    "featured": true,
+    "files": [
+      { "name": "index.js", "content": "// Hello World in JavaScript (Node.js)\nconsole.log('Hello, World!');\nconsole.log(`Node.js version: ${process.version}`);\n" }
+    ]
+  },
+  {
+    "id": "js-user-input",
+    "title": "User Input (readline)",
+    "description": "Read user input from stdin with the readline module",
+    "language": "javascript",
+    "category": "Basics",
+    "level": "Beginner",
+    "tags": ["input", "readline", "stdin"],
+    "featured": false,
+    "files": [
+      { "name": "index.js", "content": "const readline = require('readline');\n\nconst rl = readline.createInterface({\n  input: process.stdin,\n  output: process.stdout\n});\n\nrl.question('What is your name? ', (name) => {\n  rl.question('How old are you? ', (age) => {\n    console.log(`Hello ${name}, you are ${age} years old!`);\n    rl.close();\n  });\n});\n" }
+    ]
+  },
+  {
+    "id": "js-array-methods",
+    "title": "Array Methods",
+    "description": "Explore map, filter, reduce and other array methods",
+    "language": "javascript",
+    "category": "Data Structures",
+    "level": "Intermediate",
+    "tags": ["array", "map", "filter", "reduce"],
+    "featured": false,
+    "files": [
+      { "name": "index.js", "content": "// Array Methods in JavaScript\nconst numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];\n\n// map – transform each element\nconst doubled = numbers.map(n => n * 2);\nconsole.log('Doubled:', doubled);\n\n// filter – keep elements that pass a test\nconst evens = numbers.filter(n => n % 2 === 0);\nconsole.log('Evens:', evens);\n\n// reduce – accumulate into a single value\nconst sum = numbers.reduce((acc, n) => acc + n, 0);\nconsole.log('Sum:', sum);\n\n// find & findIndex\nconst firstBig = numbers.find(n => n > 7);\nconsole.log('First > 7:', firstBig);\n\n// chaining\nconst result = numbers\n  .filter(n => n % 2 !== 0)\n  .map(n => n ** 2)\n  .reduce((acc, n) => acc + n, 0);\nconsole.log('Sum of squares of odds:', result);\n" }
+    ]
+  },
+  {
+    "id": "js-modular-todo",
+    "title": "Modular Todo App",
+    "description": "Multi-file: Todo model, storage service, and CLI controller",
+    "language": "javascript",
+    "category": "Modular",
+    "level": "Intermediate",
+    "tags": ["require", "class", "multi-file", "OOP"],
+    "featured": true,
+    "files": [
+      { "name": "index.js", "content": "const TodoStore = require('./TodoStore');\nconst { printAll, printStats } = require('./display');\n\nconst store = new TodoStore();\n\nstore.add('Learn JavaScript modules');\nstore.add('Build a cool project');\nstore.add('Read documentation');\n\nstore.complete(1);\n\nconsole.log('=== Todo List ===');\nprintAll(store.getAll());\n\nconsole.log('\\n=== Stats ===');\nprintStats(store.getAll());\n" },
+      { "name": "TodoStore.js", "content": "/**\n * Simple in-memory Todo store.\n */\nclass TodoStore {\n  constructor() {\n    this._todos = [];\n    this._nextId = 1;\n  }\n\n  add(title) {\n    const todo = { id: this._nextId++, title, done: false };\n    this._todos.push(todo);\n    return todo;\n  }\n\n  complete(id) {\n    const todo = this._todos.find(t => t.id === id);\n    if (todo) todo.done = true;\n    return todo;\n  }\n\n  remove(id) {\n    this._todos = this._todos.filter(t => t.id !== id);\n  }\n\n  getAll() {\n    return [...this._todos];\n  }\n}\n\nmodule.exports = TodoStore;\n" },
+      { "name": "display.js", "content": "/**\n * Display helpers for todo items.\n */\nfunction printAll(todos) {\n  todos.forEach(t => {\n    const status = t.done ? '[x]' : '[ ]';\n    console.log(`  ${status} #${t.id} ${t.title}`);\n  });\n}\n\nfunction printStats(todos) {\n  const done = todos.filter(t => t.done).length;\n  const pending = todos.length - done;\n  console.log(`  Total: ${todos.length}  Done: ${done}  Pending: ${pending}`);\n}\n\nmodule.exports = { printAll, printStats };\n" }
+    ]
+  },
+
+  {
+    "id": "ts-hello",
+    "title": "Hello World",
+    "description": "Simple typed console output with TypeScript",
+    "language": "typescript",
+    "category": "Basics",
+    "level": "Beginner",
+    "tags": ["console", "hello", "types"],
+    "featured": true,
+    "files": [
+      { "name": "index.ts", "content": "// Hello World in TypeScript\nconst greeting: string = 'Hello, World!';\nconst year: number = new Date().getFullYear();\n\nconsole.log(greeting);\nconsole.log(`Year: ${year}`);\n" }
+    ]
+  },
+  {
+    "id": "ts-interfaces",
+    "title": "Interfaces & Types",
+    "description": "Explore TypeScript interfaces, type aliases, and generics",
+    "language": "typescript",
+    "category": "Type System",
+    "level": "Intermediate",
+    "tags": ["interface", "type", "generics"],
+    "featured": false,
+    "files": [
+      { "name": "index.ts", "content": "// TypeScript Interfaces & Generics\n\ninterface User {\n  id: number;\n  name: string;\n  email: string;\n  active: boolean;\n}\n\ntype UserSummary = Pick<User, 'id' | 'name'>;\n\nfunction createUser(name: string, email: string): User {\n  return { id: Math.floor(Math.random() * 1000), name, email, active: true };\n}\n\nfunction summarize(user: User): UserSummary {\n  return { id: user.id, name: user.name };\n}\n\n// Generic stack\nclass Stack<T> {\n  private items: T[] = [];\n\n  push(item: T): void { this.items.push(item); }\n  pop(): T | undefined { return this.items.pop(); }\n  peek(): T | undefined { return this.items[this.items.length - 1]; }\n  get size(): number { return this.items.length; }\n}\n\nconst alice = createUser('Alice', 'alice@example.com');\nconst bob = createUser('Bob', 'bob@example.com');\nconsole.log('Users:', [alice, bob]);\nconsole.log('Summaries:', [alice, bob].map(summarize));\n\nconst stack = new Stack<number>();\n[10, 20, 30].forEach(n => stack.push(n));\nconsole.log(`Stack size: ${stack.size}, top: ${stack.peek()}`);\nstack.pop();\nconsole.log(`After pop – size: ${stack.size}, top: ${stack.peek()}`);\n" }
+    ]
+  },
+  {
+    "id": "ts-modular-calc",
+    "title": "Modular Calculator",
+    "description": "Multi-file: Typed operations module and expression evaluator",
+    "language": "typescript",
+    "category": "Modular",
+    "level": "Intermediate",
+    "tags": ["import", "types", "multi-file", "enum"],
+    "featured": true,
+    "files": [
+      { "name": "index.ts", "content": "import { evaluate, Operator } from './calculator';\nimport { formatResult } from './formatter';\n\nconst expressions: [number, Operator, number][] = [\n  [10, Operator.Add, 5],\n  [10, Operator.Subtract, 3],\n  [7, Operator.Multiply, 6],\n  [100, Operator.Divide, 4],\n  [10, Operator.Divide, 0],\n];\n\nconsole.log('=== Calculator ===');\nfor (const [a, op, b] of expressions) {\n  const result = evaluate(a, op, b);\n  console.log(formatResult(a, op, b, result));\n}\n" },
+      { "name": "calculator.ts", "content": "/**\n * Core calculator with typed operations.\n */\nexport enum Operator {\n  Add = '+',\n  Subtract = '-',\n  Multiply = '*',\n  Divide = '/',\n}\n\nexport function evaluate(a: number, op: Operator, b: number): number | null {\n  switch (op) {\n    case Operator.Add:      return a + b;\n    case Operator.Subtract:  return a - b;\n    case Operator.Multiply:  return a * b;\n    case Operator.Divide:    return b === 0 ? null : a / b;\n  }\n}\n" },
+      { "name": "formatter.ts", "content": "import { Operator } from './calculator';\n\n/**\n * Pretty-print a calculation result.\n */\nexport function formatResult(\n  a: number,\n  op: Operator,\n  b: number,\n  result: number | null\n): string {\n  const expr = `${a} ${op} ${b}`;\n  if (result === null) return `${expr} = ERROR (division by zero)`;\n  return `${expr} = ${result}`;\n}\n" }
+    ]
+  },
+
+  {
+    "id": "go-hello",
+    "title": "Hello World",
+    "description": "Simple console output with Go",
+    "language": "go",
+    "category": "Basics",
+    "level": "Beginner",
+    "tags": ["fmt", "hello"],
+    "featured": true,
+    "files": [
+      { "name": "main.go", "content": "package main\n\nimport \"fmt\"\n\nfunc main() {\n\tfmt.Println(\"Hello, World!\")\n\tfmt.Println(\"Welcome to Go!\")\n}\n" }
+    ]
+  },
+  {
+    "id": "go-user-input",
+    "title": "User Input (fmt.Scan)",
+    "description": "Read user input from stdin with fmt.Scan",
+    "language": "go",
+    "category": "Basics",
+    "level": "Beginner",
+    "tags": ["input", "scan", "stdin"],
+    "featured": false,
+    "files": [
+      { "name": "main.go", "content": "package main\n\nimport \"fmt\"\n\nfunc main() {\n\tvar name string\n\tvar age int\n\n\tfmt.Print(\"What is your name? \")\n\tfmt.Scanln(&name)\n\n\tfmt.Print(\"How old are you? \")\n\tfmt.Scanln(&age)\n\n\tfmt.Printf(\"Hello %s, you are %d years old!\\n\", name, age)\n}\n" }
+    ]
+  },
+  {
+    "id": "go-structs-interfaces",
+    "title": "Structs & Interfaces",
+    "description": "Define structs, methods, and interfaces in Go",
+    "language": "go",
+    "category": "OOP",
+    "level": "Intermediate",
+    "tags": ["struct", "interface", "methods"],
+    "featured": false,
+    "files": [
+      { "name": "main.go", "content": "package main\n\nimport (\n\t\"fmt\"\n\t\"math\"\n)\n\n// Shape interface\ntype Shape interface {\n\tArea() float64\n\tPerimeter() float64\n\tString() string\n}\n\n// Circle\ntype Circle struct{ Radius float64 }\n\nfunc (c Circle) Area() float64      { return math.Pi * c.Radius * c.Radius }\nfunc (c Circle) Perimeter() float64  { return 2 * math.Pi * c.Radius }\nfunc (c Circle) String() string      { return fmt.Sprintf(\"Circle(r=%.1f)\", c.Radius) }\n\n// Rectangle\ntype Rectangle struct{ Width, Height float64 }\n\nfunc (r Rectangle) Area() float64      { return r.Width * r.Height }\nfunc (r Rectangle) Perimeter() float64  { return 2 * (r.Width + r.Height) }\nfunc (r Rectangle) String() string      { return fmt.Sprintf(\"Rect(%.1fx%.1f)\", r.Width, r.Height) }\n\nfunc printShape(s Shape) {\n\tfmt.Printf(\"%-20s  Area: %8.2f  Perimeter: %8.2f\\n\", s, s.Area(), s.Perimeter())\n}\n\nfunc main() {\n\tshapes := []Shape{\n\t\tCircle{Radius: 5},\n\t\tRectangle{Width: 4, Height: 7},\n\t\tCircle{Radius: 1.5},\n\t\tRectangle{Width: 10, Height: 2},\n\t}\n\n\tfmt.Println(\"=== Shapes ===\")\n\tfor _, s := range shapes {\n\t\tprintShape(s)\n\t}\n}\n" }
+    ]
+  },
+  {
+    "id": "go-modular-cli",
+    "title": "Modular CLI App",
+    "description": "Multi-file: Config, greet package, and main entry point",
+    "language": "go",
+    "category": "Modular",
+    "level": "Intermediate",
+    "tags": ["package", "multi-file", "struct"],
+    "featured": true,
+    "files": [
+      { "name": "main.go", "content": "package main\n\nimport (\n\t\"fmt\"\n\t\"strings\"\n)\n\n// App configuration\nvar appName = \"GoApp\"\nvar version = \"1.0.0\"\n\nfunc main() {\n\tfmt.Printf(\"%s v%s\\n\", appName, version)\n\tfmt.Println(strings.Repeat(\"=\", 30))\n\n\tusers := []User{\n\t\t{Name: \"Alice\", Role: \"admin\"},\n\t\t{Name: \"Bob\", Role: \"editor\"},\n\t\t{Name: \"Charlie\", Role: \"viewer\"},\n\t}\n\n\tfmt.Println(\"\\nAll users:\")\n\tfor _, u := range users {\n\t\tfmt.Printf(\"  %s\\n\", u.Greet())\n\t}\n\n\tfmt.Printf(\"\\nAdmins: %d\\n\", countByRole(users, \"admin\"))\n\tfmt.Printf(\"Total:  %d\\n\", len(users))\n}\n" },
+      { "name": "user.go", "content": "package main\n\nimport \"fmt\"\n\n// User represents a system user.\ntype User struct {\n\tName string\n\tRole string\n}\n\n// Greet returns a formatted greeting for the user.\nfunc (u User) Greet() string {\n\treturn fmt.Sprintf(\"%s (%s)\", u.Name, u.Role)\n}\n\n// countByRole counts users with a given role.\nfunc countByRole(users []User, role string) int {\n\tcount := 0\n\tfor _, u := range users {\n\t\tif u.Role == role {\n\t\t\tcount++\n\t\t}\n\t}\n\treturn count\n}\n" }
+    ]
+  },
+
+  {
+    "id": "rb-hello",
+    "title": "Hello World",
+    "description": "Simple console output with Ruby",
+    "language": "ruby",
+    "category": "Basics",
+    "level": "Beginner",
+    "tags": ["puts", "hello"],
+    "featured": true,
+    "files": [
+      { "name": "main.rb", "content": "# Hello World in Ruby\nputs 'Hello, World!'\nputs \"Ruby version: #{RUBY_VERSION}\"\n" }
+    ]
+  },
+  {
+    "id": "rb-user-input",
+    "title": "User Input (gets)",
+    "description": "Read user input from stdin with gets",
+    "language": "ruby",
+    "category": "Basics",
+    "level": "Beginner",
+    "tags": ["input", "gets", "stdin"],
+    "featured": false,
+    "files": [
+      { "name": "main.rb", "content": "# User Input in Ruby\nprint 'What is your name? '\nname = gets.chomp\n\nprint 'How old are you? '\nage = gets.chomp.to_i\n\nputs \"Hello #{name}, you are #{age} years old!\"\n" }
+    ]
+  },
+  {
+    "id": "rb-classes",
+    "title": "Classes & Mixins",
+    "description": "Explore Ruby classes, modules, and mixins",
+    "language": "ruby",
+    "category": "OOP",
+    "level": "Intermediate",
+    "tags": ["class", "module", "mixin", "attr"],
+    "featured": false,
+    "files": [
+      { "name": "main.rb", "content": "# Ruby Classes & Mixins\n\nmodule Printable\n  def to_s\n    vars = instance_variables.map { |v| \"#{v}=#{instance_variable_get(v)}\" }.join(', ')\n    \"#{self.class.name}(#{vars})\"\n  end\nend\n\nclass Animal\n  include Printable\n  attr_reader :name, :sound\n\n  def initialize(name, sound)\n    @name = name\n    @sound = sound\n  end\n\n  def speak\n    \"#{@name} says #{@sound}!\"\n  end\nend\n\nclass Dog < Animal\n  attr_reader :breed\n\n  def initialize(name, breed)\n    super(name, 'Woof')\n    @breed = breed\n  end\n\n  def fetch(item)\n    \"#{@name} fetches the #{item}!\"\n  end\nend\n\nclass Cat < Animal\n  def initialize(name)\n    super(name, 'Meow')\n  end\n\n  def purr\n    \"#{@name} purrs softly...\"\n  end\nend\n\nanimals = [\n  Dog.new('Rex', 'Labrador'),\n  Cat.new('Whiskers'),\n  Dog.new('Buddy', 'Beagle'),\n]\n\nputs '=== Animals ==='\nanimals.each do |a|\n  puts \"  #{a} -> #{a.speak}\"\nend\n\nputs \"\\n#{animals[0].fetch('ball')}\"\nputs animals[1].purr\n" }
+    ]
+  },
+  {
+    "id": "rb-modular-shop",
+    "title": "Modular Shop",
+    "description": "Multi-file: Product catalog, cart, and main script with require_relative",
+    "language": "ruby",
+    "category": "Modular",
+    "level": "Intermediate",
+    "tags": ["require_relative", "class", "multi-file", "OOP"],
+    "featured": true,
+    "files": [
+      { "name": "main.rb", "content": "require_relative 'product'\nrequire_relative 'cart'\n\ncatalog = [\n  Product.new('Laptop', 999.99),\n  Product.new('Mouse', 29.99),\n  Product.new('Keyboard', 79.99),\n  Product.new('Monitor', 349.99),\n]\n\nputs '=== Product Catalog ==='\ncatalog.each { |p| puts \"  #{p}\" }\n\ncart = Cart.new\ncart.add(catalog[0])\ncart.add(catalog[1], 2)\ncart.add(catalog[2])\n\nputs \"\\n=== Shopping Cart ===\"\ncart.display\n\nputs \"\\nTotal: $#{'%.2f' % cart.total}\"\nputs \"Items: #{cart.item_count}\"\n" },
+      { "name": "product.rb", "content": "# Represents a product with a name and price.\nclass Product\n  attr_reader :name, :price\n\n  def initialize(name, price)\n    @name = name\n    @price = price\n  end\n\n  def to_s\n    \"#{@name} – $#{'%.2f' % @price}\"\n  end\nend\n" },
+      { "name": "cart.rb", "content": "# A shopping cart that holds products with quantities.\nclass Cart\n  def initialize\n    @items = []\n  end\n\n  def add(product, qty = 1)\n    existing = @items.find { |i| i[:product].name == product.name }\n    if existing\n      existing[:qty] += qty\n    else\n      @items << { product: product, qty: qty }\n    end\n  end\n\n  def total\n    @items.sum { |i| i[:product].price * i[:qty] }\n  end\n\n  def item_count\n    @items.sum { |i| i[:qty] }\n  end\n\n  def display\n    @items.each do |i|\n      line_total = i[:product].price * i[:qty]\n      puts \"  #{i[:product].name} x#{i[:qty]}  $#{'%.2f' % line_total}\"\n    end\n  end\nend\n" }
+    ]
+  }
+]

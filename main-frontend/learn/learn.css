@@ -1,0 +1,195 @@
+:root {
+  --learn-bg: #03081b;
+  --learn-bg-soft: #071332;
+  --learn-panel: rgba(8, 16, 42, 0.84);
+  --learn-panel-border: rgba(45, 108, 203, 0.34);
+  --learn-text-main: #eef4ff;
+  --learn-text-soft: #97afd4;
+  --learn-accent: #23dcff;
+  --learn-accent-soft: rgba(35, 220, 255, 0.24);
+}
+
+html[data-theme='light'] {
+  --learn-bg: #eef4ff;
+  --learn-bg-soft: #f6f9ff;
+  --learn-panel: rgba(255, 255, 255, 0.9);
+  --learn-panel-border: rgba(100, 135, 199, 0.34);
+  --learn-text-main: #1a2846;
+  --learn-text-soft: #5a6f97;
+  --learn-accent: #0d8fbe;
+  --learn-accent-soft: rgba(13, 143, 190, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  color: var(--learn-text-main);
+  background:
+    radial-gradient(95% 95% at 15% 15%, rgba(20, 211, 181, 0.12), transparent 64%),
+    radial-gradient(80% 80% at 85% 70%, rgba(21, 141, 230, 0.22), transparent 66%),
+    linear-gradient(180deg, var(--learn-bg-soft) 0%, var(--learn-bg) 100%);
+  min-height: 100vh;
+}
+
+.learn-home {
+  width: min(980px, calc(100% - 44px));
+  margin: 0 auto;
+  padding: 42px 0 72px;
+}
+
+.learn-head {
+  margin-bottom: 24px;
+}
+
+.learn-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.02em;
+}
+
+.learn-title .title-icon {
+  color: var(--learn-accent);
+  font-weight: 800;
+}
+
+.learn-subtitle {
+  margin: 14px 0 0;
+  color: var(--learn-text-soft);
+  font-size: clamp(1.05rem, 1.7vw, 1.6rem);
+}
+
+.language-list {
+  display: grid;
+  gap: 14px;
+}
+
+.language-card {
+  text-decoration: none;
+  color: inherit;
+  background: linear-gradient(100deg, rgba(5, 14, 39, 0.88), rgba(4, 20, 52, 0.68));
+  border: 1px solid var(--learn-panel-border);
+  border-radius: 18px;
+  padding: 16px 20px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 14px 32px rgba(3, 11, 30, 0.28);
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.language-card:hover,
+.language-card:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(35, 220, 255, 0.62);
+  box-shadow:
+    0 16px 34px rgba(3, 11, 30, 0.38),
+    0 0 22px rgba(35, 220, 255, 0.22);
+  outline: none;
+}
+
+.lang-badge {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.language-logo {
+  width: 44px;
+  height: 44px;
+  display: block;
+  border-radius: 12px;
+  box-shadow:
+    inset 0 0 0 1px rgba(158, 206, 255, 0.18),
+    0 10px 18px rgba(3, 11, 30, 0.28);
+}
+
+.language-name {
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.language-arrow {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  color: #8cb0de;
+  transition: transform 0.18s ease, color 0.18s ease;
+}
+
+.language-card:hover .language-arrow,
+.language-card:focus-visible .language-arrow {
+  color: var(--learn-accent);
+  transform: translateX(2px);
+}
+
+.language-arrow svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.language-card.last-opened {
+  border-color: rgba(35, 220, 255, 0.66);
+  box-shadow:
+    0 0 0 1px rgba(35, 220, 255, 0.22) inset,
+    0 0 18px rgba(35, 220, 255, 0.16);
+}
+
+html[data-theme='light'] .language-card {
+  background: linear-gradient(100deg, rgba(255, 255, 255, 0.96), rgba(243, 248, 255, 0.86));
+  box-shadow: 0 12px 24px rgba(54, 87, 147, 0.14);
+}
+
+html[data-theme='light'] .lang-badge {
+  filter: saturate(0.98);
+}
+
+html[data-theme='light'] .language-logo {
+  box-shadow:
+    inset 0 0 0 1px rgba(108, 157, 228, 0.2),
+    0 8px 14px rgba(54, 87, 147, 0.16);
+}
+
+html[data-theme='light'] .language-arrow {
+  color: #5d78aa;
+}
+
+@media (max-width: 760px) {
+  .learn-home {
+    width: min(980px, calc(100% - 24px));
+    padding: 28px 0 50px;
+  }
+
+  .language-card {
+    padding: 14px 14px;
+    border-radius: 15px;
+    gap: 12px;
+  }
+
+  .lang-badge {
+    width: 40px;
+    height: 40px;
+  }
+
+  .language-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+  }
+}

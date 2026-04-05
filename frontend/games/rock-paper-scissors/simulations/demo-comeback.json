@@ -1,0 +1,33 @@
+{
+  "metadata": {
+    "title": "RPS Comeback Demo",
+    "description": "Fallback simulation where player recovers and wins.",
+    "date": "2026-04-01",
+    "version": "1.0"
+  },
+  "meta": {
+    "rounds": 7,
+    "tickDurationMs": 820
+  },
+  "players": {
+    "user": { "name": "Code Runner" },
+    "bot": { "name": "Arena Bot" }
+  },
+  "rounds": [
+    { "t": 0, "round": 1, "userMoveCode": 1, "userMove": "ROCK", "botMoveCode": 2, "botMove": "PAPER", "outcome": "loss" },
+    { "t": 1, "round": 2, "userMoveCode": 1, "userMove": "ROCK", "botMoveCode": 1, "botMove": "ROCK", "outcome": "draw" },
+    { "t": 2, "round": 3, "userMoveCode": 3, "userMove": "SCISSORS", "botMoveCode": 2, "botMove": "PAPER", "outcome": "win" },
+    { "t": 3, "round": 4, "userMoveCode": 2, "userMove": "PAPER", "botMoveCode": 1, "botMove": "ROCK", "outcome": "win" },
+    { "t": 4, "round": 5, "userMoveCode": 2, "userMove": "PAPER", "botMoveCode": 3, "botMove": "SCISSORS", "outcome": "loss" },
+    { "t": 5, "round": 6, "userMoveCode": 3, "userMove": "SCISSORS", "botMoveCode": 2, "botMove": "PAPER", "outcome": "win" },
+    { "t": 6, "round": 7, "userMoveCode": 1, "userMove": "ROCK", "botMoveCode": 3, "botMove": "SCISSORS", "outcome": "win" }
+  ],
+  "result": {
+    "outcome": "success",
+    "reason": "Player wins 4 to 2 with 1 draw.",
+    "finalRound": 7,
+    "wins": 4,
+    "losses": 2,
+    "draws": 1
+  }
+}

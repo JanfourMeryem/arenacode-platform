@@ -1,0 +1,43 @@
+{
+  "metadata": {
+    "title": "Perfect Training Run",
+    "description": "A clean sweep of every apple along the scripted path.",
+    "date": "2025-03-01",
+    "version": "1.0"
+  },
+  "grid": { "width": 30, "height": 18 },
+  "player": {
+    "name": "Neon Serpent",
+    "color": {
+      "head": "#7ff8ff",
+      "body": "#0d4a5a",
+      "glow": "#30e4ff"
+    },
+    "startPosition": { "x": 5, "y": 7 },
+    "startDirection": "RIGHT",
+    "initialLength": 3
+  },
+  "moves": [
+    { "turn": 1, "direction": "RIGHT" },
+    { "turn": 2, "direction": "RIGHT" },
+    { "turn": 3, "direction": "RIGHT" },
+    { "turn": 4, "direction": "UP" },
+    { "turn": 5, "direction": "UP" },
+    { "turn": 6, "direction": "RIGHT" },
+    { "turn": 7, "direction": "RIGHT" },
+    { "turn": 8, "direction": "RIGHT" },
+    { "turn": 9, "direction": "RIGHT" },
+    { "turn": 10, "direction": "UP" },
+    { "turn": 11, "direction": "UP" },
+    { "turn": 12, "direction": "UP" },
+    { "turn": 13, "direction": "RIGHT" },
+    { "turn": 14, "direction": "RIGHT" },
+    { "turn": 15, "direction": "RIGHT" },
+    { "turn": 16, "direction": "RIGHT" }
+  ],
+  "result": {
+    "outcome": "success",
+    "reason": "Completed path without collisions",
+    "finalTurn": 16
+  }
+}

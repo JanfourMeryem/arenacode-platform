@@ -1,0 +1,43 @@
+{
+  "meta": {
+    "rows": 10,
+    "cols": 17,
+    "tickDurationMs": 700,
+    "allowWallCollision": true
+  },
+  "grid": [
+    "##..##..###..####",
+    "#S.....##.#.##..#",
+    "##..##.#.####..##",
+    ".##.###....#...##",
+    "##.....####.###..",
+    ".#.###......##.#.",
+    ".##.###...#.##.##",
+    "#..##.###.#..E#.#",
+    "##..##..#####...#",
+    "#..#####.###..###"
+  ],
+  "steps": [
+    { "t": 0, "move": "START" },
+    { "t": 1, "move": "RIGHT" },
+    { "t": 2, "move": "RIGHT" },
+    { "t": 3, "move": "RIGHT" },
+    { "t": 4, "move": "RIGHT" },
+    { "t": 5, "move": "RIGHT" },
+    { "t": 6, "move": "DOWN" },
+    { "t": 7, "move": "DOWN" },
+    { "t": 8, "move": "RIGHT" },
+    { "t": 9, "move": "RIGHT" },
+    { "t": 10, "move": "RIGHT" },
+    { "t": 11, "move": "RIGHT" },
+    { "t": 12, "move": "DOWN" },
+    { "t": 13, "move": "DOWN" },
+    { "t": 14, "move": "LEFT" },
+    { "t": 15, "move": "LEFT" },
+    { "t": 16, "move": "LEFT" },
+    { "t": 17, "move": "DOWN" },
+    { "t": 18, "move": "RIGHT" },
+    { "t": 19, "move": "RIGHT" },
+    { "t": 20, "move": "DOWN" }
+  ]
+}

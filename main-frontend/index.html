@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ArenaCode Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="/shared-theme.css">
+</head>
+<body>
+  <div class="page-grid" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="navbar">
+      <a class="brand" href="/">
+        <span class="brand-icon">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+            <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/>
+          </svg>
+        </span>
+        <span class="brand-text">ArenaCode</span>
+      </a>
+
+      <ul class="nav-links">
+        <li>
+          <a class="active" href="/">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
+            <span data-i18n="nav.home">Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="/playground/">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7l-4 5 4 5M16 7l4 5-4 5M13 5l-2 14"/></svg>
+            <span data-i18n="nav.playground">Playground</span>
+          </a>
+        </li>
+        <li>
+          <a href="/challenges/">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 8h7a4.5 4.5 0 0 1 4.5 4.5v0A4.5 4.5 0 0 1 15.5 17h-7A4.5 4.5 0 0 1 4 12.5v0A4.5 4.5 0 0 1 8.5 8z"/><path d="M8 12h.01M12 12h.01M16 12h.01"/></svg>
+            <span data-i18n="nav.challenges">Challenges</span>
+          </a>
+        </li>
+        <li>
+          <a href="/learn/">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h7v14H4zM13 5h7v14h-7zM11 7h2M11 17h2"/></svg>
+            <span data-i18n="nav.learn">Learn</span>
+          </a>
+        </li>
+      </ul>
+      <div class="header-actions">
+        <button class="global-theme-toggle" type="button" data-global-theme-toggle aria-label="Switch to light mode" title="Switch to light mode">
+          <svg class="theme-icon sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="theme-icon moon-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"></path>
+          </svg>
+        </button>
+      </div>
+
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section-wrap">
+      <div class="hero-inner">
+        <div class="hero-left">
+          <span class="hero-badge">
+            <span class="hero-badge-dot"></span>
+            <span data-i18n="home.hero.badge">Interactive Learning Platform</span>
+          </span>
+          <h1>
+            <span data-i18n="home.hero.title.main">Practice Algorithms</span>
+            <span data-i18n="home.hero.title.accent">Through Play</span>
+          </h1>
+          <p data-i18n="home.hero.subtitle">Code, Play, Learn. Improve your logic with interactive challenges designed for real growth.</p>
+          <div class="hero-actions">
+            <a href="/playground/" class="btn btn-solid">
+              <span class="btn-icon">&gt;_</span>
+              <span data-i18n="home.hero.start_coding">Start Coding</span>
+            </a>
+            <a href="/challenges/" class="btn btn-ghost">
+              <span class="btn-icon">▶</span>
+              <span data-i18n="home.hero.explore_games">Explore Games</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-right" aria-hidden="true">
+          <article class="hero-preview">
+            <header class="hero-preview-top">
+              <span class="traffic red"></span>
+              <span class="traffic yellow"></span>
+              <span class="traffic green"></span>
+              <span>algorithm-challenge.js</span>
+            </header>
+            <div class="hero-preview-body">
+              <pre><code>function findPath() {
+  const path = [];
+  for (let i = 0; i &lt; n; i++) {
+    path.push(i);
+  }
+
+  return path;
+}</code></pre>
+              <div class="board-mini">
+                <span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span class="goal"></span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="mastering section-wrap">
+      <div class="section-head">
+        <h2><span data-i18n="home.master.title.main">Three Ways to</span> <span data-i18n="home.master.title.accent">Master Coding</span></h2>
+        <p data-i18n="home.master.subtitle">Choose your path and level up your programming skills</p>
+      </div>
+
+      <div class="master-cards">
+        <a class="master-card master-card-link" href="/learn/" aria-label="Open Learn Languages">
+          <div class="master-icon icon-learn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6a2 2 0 0 1 2-2h5v16H6a2 2 0 0 0-2 2zM20 6a2 2 0 0 0-2-2h-5v16h5a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3 data-i18n="home.card.learn.title">Learn Programming Languages</h3>
+          <p data-i18n="home.card.learn.desc">Beginner-friendly explanations and structured lessons for each language.</p>
+          <div class="master-preview learn-preview">
+            <div class="lesson-row active"><span>1</span> Variables &amp; Types</div>
+            <div class="lesson-row"><span>2</span> Control Flow</div>
+            <div class="lesson-row"><span>3</span> Functions</div>
+          </div>
+        </a>
+
+        <a class="master-card master-card-link featured" href="/playground/" aria-label="Open Code Playground">
+          <div class="master-icon icon-terminal">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8l4 4-4 4M11 16h8"/></svg>
+          </div>
+          <h3 data-i18n="home.card.playground.title">Code Playground</h3>
+          <p data-i18n="home.card.playground.desc">Write and test your algorithms in a powerful editor similar to VS Code.</p>
+          <div class="master-preview code-preview">
+            <div class="line muted"><span class="dot-small"></span>main.js</div>
+            <div class="line code">function solve() {</div>
+            <div class="line comment">// Your code here</div>
+            <div class="line code">}</div>
+          </div>
+        </a>
+
+        <a class="master-card master-card-link" href="/challenges/" aria-label="Open Interactive Game Challenges">
+          <div class="master-icon icon-game">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 9h10a4 4 0 0 1 4 4v1a3 3 0 0 1-3 3 3 3 0 0 1-2.6-1.5L14 14h-4l-1.4 1.5A3 3 0 0 1 6 17a3 3 0 0 1-3-3v-1a4 4 0 0 1 4-4zM8 13h2M9 12v2M15.5 12.5h.01M18 13.5h.01"/></svg>
+          </div>
+          <h3 data-i18n="home.card.challenges.title">Interactive Game Challenges</h3>
+          <p data-i18n="home.card.challenges.desc">Solve algorithmic problems and see your code come to life.</p>
+          <div class="master-preview challenge-preview">
+            <div class="challenge-code">
+              <span>code()</span>
+              <span>...</span>
+            </div>
+            <div class="challenge-grid">
+              <span></span><span></span><span></span>
+              <span></span><span class="active"></span><span></span>
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="cta section-wrap">
+      <div class="cta-inner">
+        <div class="cta-icon-wrap">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.1 5.7L20 11l-5.9 2.3L12 19l-2.1-5.7L4 11l5.9-2.3zM19 3v3M17.5 4.5h3"/></svg>
+        </div>
+        <h2><span data-i18n="home.cta.title.main">Start Your</span> <span data-i18n="home.cta.title.accent">Coding Adventure</span> <span data-i18n="home.cta.title.tail">Today</span></h2>
+        <p data-i18n="home.cta.desc">Join thousands of students mastering algorithms through interactive gameplay. No credit card required.</p>
+        <a href="/challenges/" class="cta-button">
+          <span data-i18n="home.cta.button">Get Started</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l1.6 4.4L18 10l-4.4 1.6L12 16l-1.6-4.4L6 10l4.4-1.6zM18.5 4.5v2M17.5 5.5h2"/></svg>
+        </a>
+        <span class="cta-note" data-i18n="home.cta.note">Free forever • No setup required • Start coding in seconds</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer section-wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="brand" href="/">
+          <span class="brand-icon">&lt;/&gt;</span>
+          <span class="brand-text">ArenaCode</span>
+        </a>
+        <p data-i18n="home.footer.tagline">Learn algorithms and programming through interactive games and challenges.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4 data-i18n="footer.product">Product</h4>
+        <a href="/playground/" data-i18n="nav.playground">Playground</a>
+        <a href="/challenges/" data-i18n="nav.challenges">Challenges</a>
+        <a href="/learn/" data-i18n="nav.learn">Learn</a>
+      </div>
+
+      <div class="footer-links">
+        <h4 data-i18n="footer.company">Company</h4>
+        <a href="#" data-i18n="footer.about">About</a>
+        <a href="#" data-i18n="footer.blog">Blog</a>
+        <a href="#" data-i18n="footer.careers">Careers</a>
+      </div>
+
+      <div class="footer-links">
+        <h4 data-i18n="footer.legal">Legal</h4>
+        <a href="#" data-i18n="footer.privacy">Privacy</a>
+        <a href="#" data-i18n="footer.terms">Terms</a>
+        <a href="#" data-i18n="footer.cookie">Cookie Policy</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p data-i18n="home.footer.rights">© 2026 Meryem Janfour. All rights reserved.</p>
+      <div class="socials">
+        <a href="https://github.com/JanfourMeryem" aria-label="GitHub">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-2c-2.9.7-3.5-1.2-3.5-1.2-.5-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.6 1 1.6 1 1 .1 2-.4 2.5-1-.3-.7-.6-1.3-.2-2.2-2.3-.3-4.7-1.1-4.7-5A3.8 3.8 0 0 1 6 6.8s.8-.2 2.6 1a9.1 9.1 0 0 1 4.8 0c1.8-1.2 2.6-1 2.6-1a3.8 3.8 0 0 1 1 2.8c0 3.8-2.4 4.7-4.7 5 .4.4.8 1.1.8 2.1v3.2c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>
+        </a>
+        <a href="#" aria-label="Twitter">
+          <svg viewBox="0 0 24 24"><path d="M22 5.9a8.5 8.5 0 0 1-2.4.7 4.2 4.2 0 0 0 1.8-2.3 8.5 8.5 0 0 1-2.7 1A4.2 4.2 0 0 0 11.5 9v1A11.9 11.9 0 0 1 3 5.2a4.2 4.2 0 0 0 1.3 5.6 4.1 4.1 0 0 1-1.9-.5v.1a4.2 4.2 0 0 0 3.3 4.1 4.4 4.4 0 0 1-1.9.1 4.2 4.2 0 0 0 3.9 2.9A8.6 8.6 0 0 1 2 19.3 12.2 12.2 0 0 0 8.6 21c8 0 12.4-6.7 12.4-12.4v-.6A8.8 8.8 0 0 0 22 5.9z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/meryem-janfour-647264351/" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M6.9 8.2a1.9 1.9 0 1 1 0-3.8 1.9 1.9 0 0 1 0 3.8zM5.2 9.6h3.4V20H5.2zM10.5 9.6h3.2v1.4h.1a3.5 3.5 0 0 1 3.2-1.7c3.5 0 4.1 2.3 4.1 5.2V20h-3.4v-4.8c0-1.2 0-2.6-1.6-2.6s-1.9 1.2-1.9 2.5V20h-3.4z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+  <script src="/shared/i18n.js"></script>
+  <script src="/shared/i18n-engine.js"></script>
+  <script src="/theme-toggle.js"></script>
+  <script>
+    (function syncHeroToHeaderHeight() {
+      const header = document.querySelector('.site-header');
+      if (!header) return;
+
+      const update = () => {
+        document.documentElement.style.setProperty('--site-header-height', `${header.offsetHeight}px`);
+      };
+
+      update();
+      window.addEventListener('resize', update);
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Your Game</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared-header.css">
+  <link rel="stylesheet" href="/shared-theme.css">
+  <style>
+    :root {
+      --bg-primary: #02081a;
+      --bg-secondary: #05122b;
+      --line: rgba(21, 141, 230, 0.18);
+      --text-main: #f0f5ff;
+      --text-soft: #a0b7da;
+      --panel: rgba(7, 19, 44, 0.55);
+      --panel-border: rgba(55, 107, 188, 0.4);
+      --button-bg: rgba(11, 30, 64, 0.76);
+      --button-border: rgba(104, 142, 203, 0.36);
+      --button-hover-bg: rgba(18, 50, 100, 0.78);
+      --button-hover-border: rgba(20, 206, 255, 0.72);
+    }
+
+    html[data-theme="dark"] {
+      --bg-primary: #02081a;
+      --bg-secondary: #05122b;
+      --line: rgba(21, 141, 230, 0.18);
+      --text-main: #f0f5ff;
+      --text-soft: #a0b7da;
+      --panel: rgba(7, 19, 44, 0.55);
+      --panel-border: rgba(55, 107, 188, 0.4);
+      --button-bg: rgba(11, 30, 64, 0.76);
+      --button-border: rgba(104, 142, 203, 0.36);
+      --button-hover-bg: rgba(18, 50, 100, 0.78);
+      --button-hover-border: rgba(20, 206, 255, 0.72);
+    }
+
+    html[data-theme="light"] {
+      --bg-primary: #edf3ff;
+      --bg-secondary: #f7faff;
+      --line: rgba(57, 111, 201, 0.18);
+      --text-main: #1f2d4a;
+      --text-soft: #5d7198;
+      --panel: rgba(255, 255, 255, 0.8);
+      --panel-border: rgba(96, 134, 194, 0.36);
+      --button-bg: rgba(244, 249, 255, 0.86);
+      --button-border: rgba(118, 149, 199, 0.32);
+      --button-hover-bg: rgba(224, 236, 255, 0.9);
+      --button-hover-border: rgba(54, 112, 213, 0.55);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+      min-height: 100vh;
+      display: block;
+      color: var(--text-main);
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 84px 84px;
+      opacity: 0.42;
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(80% 80% at 20% 20%, rgba(17, 153, 235, 0.22), transparent 62%),
+        radial-gradient(95% 95% at 80% 70%, rgba(20, 211, 181, 0.15), transparent 65%);
+      z-index: -1;
+    }
+
+    .challenge-shell {
+      width: min(1140px, calc(100% - 44px));
+      margin: 0 auto;
+      padding: 58px 0 80px;
+    }
+
+    .challenge-head {
+      text-align: center;
+      margin-bottom: 34px;
+    }
+
+    .challenge-head h1 {
+      font-size: clamp(2.2rem, 4.2vw, 3.8rem);
+      letter-spacing: -0.02em;
+      color: var(--button-hover-border);
+      font-weight: 700;
+    }
+
+    .challenge-head p {
+      margin-top: 10px;
+      font-size: clamp(1rem, 1.4vw, 1.45rem);
+      color: var(--text-soft);
+    }
+
+    .challenge-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .challenge-card {
+      display: grid;
+      grid-template-columns: 164px 1fr 32px;
+      align-items: center;
+      gap: 22px;
+      text-decoration: none;
+      color: inherit;
+      padding: 18px 24px;
+      border-radius: 20px;
+      background: rgba(7, 19, 44, 0.82);
+      border: 1px solid rgba(53, 99, 171, 0.42);
+      box-shadow: 0 18px 34px rgba(2, 10, 30, 0.28);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      cursor: pointer;
+    }
+
+    .challenge-card:hover,
+    .challenge-card:focus-visible {
+      transform: translateY(-4px);
+      border-color: rgba(20, 206, 255, 0.72);
+      box-shadow:
+        0 22px 38px rgba(1, 8, 24, 0.56),
+        0 0 28px rgba(22, 217, 251, 0.22);
+      outline: none;
+    }
+
+    .thumb {
+      width: 164px;
+      height: 142px;
+      border-radius: 14px;
+      border: 1px solid rgba(62, 101, 164, 0.42);
+      background: #060f23;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+    }
+
+    .thumb svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .challenge-copy h2 {
+      font-size: clamp(1.7rem, 2.1vw, 2.5rem);
+      font-weight: 600;
+      letter-spacing: -0.015em;
+    }
+
+    .challenge-copy p {
+      margin-top: 8px;
+      font-size: clamp(1rem, 1.2vw, 1.4rem);
+      line-height: 1.45;
+      color: var(--text-soft);
+      max-width: 900px;
+    }
+
+    .difficulty {
+      margin-top: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 74px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      border: 1px solid transparent;
+    }
+
+    .difficulty.easy {
+      color: #22c55e;
+      background: rgba(34, 197, 94, 0.16);
+      border-color: rgba(34, 197, 94, 0.48);
+    }
+
+    .difficulty.medium {
+      color: #eab308;
+      background: rgba(234, 179, 8, 0.16);
+      border-color: rgba(234, 179, 8, 0.48);
+    }
+
+    .difficulty.hard {
+      color: #ef4444;
+      background: rgba(239, 68, 68, 0.16);
+      border-color: rgba(239, 68, 68, 0.48);
+    }
+
+    .arrow {
+      display: grid;
+      place-items: center;
+      color: #4f6a97;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .challenge-card:hover .arrow,
+    .challenge-card:focus-visible .arrow {
+      color: #8db7ff;
+      transform: translateX(2px);
+    }
+
+    .arrow svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    html[data-theme="light"] .challenge-card {
+      background: rgba(255, 255, 255, 0.92);
+      border-color: rgba(96, 134, 194, 0.36);
+      box-shadow: 0 14px 28px rgba(56, 93, 160, 0.14);
+    }
+
+    html[data-theme="light"] .challenge-card:hover,
+    html[data-theme="light"] .challenge-card:focus-visible {
+      border-color: rgba(54, 112, 213, 0.58);
+      box-shadow:
+        0 18px 32px rgba(56, 93, 160, 0.2),
+        0 0 18px rgba(60, 120, 219, 0.2);
+    }
+
+    html[data-theme="light"] .thumb {
+      background: #f4f7ff;
+      border-color: rgba(118, 149, 199, 0.34);
+    }
+
+    html[data-theme="light"] .thumb svg {
+      filter: brightness(1.14) saturate(0.82);
+    }
+
+    html[data-theme="light"] .arrow {
+      color: #5f78a8;
+    }
+
+    @media (max-width: 900px) {
+      .challenge-card {
+        grid-template-columns: 124px 1fr 24px;
+        gap: 14px;
+        padding: 14px 15px;
+      }
+
+      .thumb {
+        width: 124px;
+        height: 110px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .challenge-shell {
+        width: min(1140px, calc(100% - 22px));
+        padding: 34px 0 52px;
+      }
+
+      .challenge-card {
+        grid-template-columns: 1fr;
+      }
+
+      .thumb {
+        width: 100%;
+        height: 150px;
+      }
+
+      .arrow {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="platform-header">
+    <nav class="platform-navbar">
+      <a class="platform-brand" href="/">
+        <span class="platform-brand-icon">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+            <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/>
+          </svg>
+        </span>
+        <span class="platform-brand-text">ArenaCode</span>
+      </a>
+
+      <ul class="platform-nav-links">
+        <li>
+          <a href="/">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
+            <span data-i18n="nav.home">Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="/playground/">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7l-4 5 4 5M16 7l4 5-4 5M13 5l-2 14"/></svg>
+            <span data-i18n="nav.playground">Playground</span>
+          </a>
+        </li>
+        <li>
+          <a class="active" href="/challenges/">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 8h7a4.5 4.5 0 0 1 4.5 4.5v0A4.5 4.5 0 0 1 15.5 17h-7A4.5 4.5 0 0 1 4 12.5v0A4.5 4.5 0 0 1 8.5 8z"/><path d="M8 12h.01M12 12h.01M16 12h.01"/></svg>
+            <span data-i18n="nav.challenges">Challenges</span>
+          </a>
+        </li>
+        <li>
+          <a href="/learn/">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h7v14H4zM13 5h7v14h-7zM11 7h2M11 17h2"/></svg>
+            <span data-i18n="nav.learn">Learn</span>
+          </a>
+        </li>
+      </ul>
+      <div class="header-actions">
+        <button class="global-theme-toggle" type="button" data-global-theme-toggle aria-label="Switch to light mode" title="Switch to light mode">
+          <svg class="theme-icon sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="theme-icon moon-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"></path>
+          </svg>
+        </button>
+      </div>
+
+    </nav>
+  </header>
+
+  <main class="challenge-shell">
+    <header class="challenge-head">
+      <h1 data-i18n="challenges.page.title">Choose Your Challenge</h1>
+      <p data-i18n="challenges.page.subtitle">Select a game and solve algorithms interactively.</p>
+    </header>
+
+    <section class="challenge-list" aria-label="Challenge selection">
+      <a class="challenge-card" href="/challenges/games/rock-paper-scissors/" aria-label="Open Rock Paper Scissors challenge">
+              <div class="thumb" aria-hidden="true">
+                <svg viewBox="0 0 160 140">
+                  <rect width="160" height="140" fill="#060f22"/>
+                  <defs>
+                    <linearGradient id="rpsGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#44ccff"/>
+                      <stop offset="100%" stop-color="#8b7bff"/>
+                    </linearGradient>
+                    <linearGradient id="rpsWarm" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#f59e0b"/>
+                      <stop offset="100%" stop-color="#ef4444"/>
+                    </linearGradient>
+                  </defs>
+                  <rect x="12" y="18" width="136" height="104" rx="14" fill="#0a1634" stroke="#2d4477" />
+                  <circle cx="52" cy="70" r="26" fill="url(#rpsGlow)" opacity="0.9"/>
+                  <circle cx="108" cy="70" r="26" fill="url(#rpsWarm)" opacity="0.9"/>
+                  <text x="52" y="78" font-size="30" text-anchor="middle" fill="#ffffff">✊</text>
+                  <text x="108" y="78" font-size="30" text-anchor="middle" fill="#ffffff">✌</text>
+                  <rect x="63" y="56" width="34" height="28" rx="8" fill="#09152f" stroke="#4a64a2"/>
+                  <text x="80" y="75" font-size="13" text-anchor="middle" fill="#91dfff" font-family="Inter, sans-serif">VS</text>
+                  <g fill="#1f3660">
+                    <circle cx="20" cy="24" r="3"/><circle cx="32" cy="24" r="3"/><circle cx="44" cy="24" r="3"/>
+                    <circle cx="116" cy="114" r="3"/><circle cx="128" cy="114" r="3"/><circle cx="140" cy="114" r="3"/>
+                  </g>
+                </svg>
+              </div>
+              <div class="challenge-copy">
+                <h2 data-i18n="challenges.rps.title">Rock Paper Scissors</h2>
+                <p data-i18n="challenges.rps.desc">Code your move strategy against a randomized bot and replay each duel round by round.</p>
+                <span class="difficulty easy" data-i18n="difficulty.easy">Easy</span>
+              </div>
+              <div class="arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+              </div>
+            </a>
+
+      <a class="challenge-card" href="/challenges/games/solo-snake/" aria-label="Open Solo Snake challenge">
+              <div class="thumb" aria-hidden="true">
+                <svg viewBox="0 0 160 140">
+                  <rect width="160" height="140" fill="#060f22"/>
+                  <g fill="#162846">
+                    <circle cx="22" cy="18" r="7"/><circle cx="38" cy="18" r="7"/><circle cx="54" cy="18" r="7"/><circle cx="70" cy="18" r="7"/><circle cx="86" cy="18" r="7"/><circle cx="102" cy="18" r="7"/><circle cx="118" cy="18" r="7"/><circle cx="134" cy="18" r="7"/>
+                    <circle cx="22" cy="34" r="7"/><circle cx="38" cy="34" r="7"/><circle cx="54" cy="34" r="7"/><circle cx="70" cy="34" r="7"/><circle cx="86" cy="34" r="7"/><circle cx="102" cy="34" r="7"/><circle cx="118" cy="34" r="7"/><circle cx="134" cy="34" r="7"/>
+                    <circle cx="22" cy="50" r="7"/><circle cx="38" cy="50" r="7"/><circle cx="54" cy="50" r="7"/><circle cx="70" cy="50" r="7"/><circle cx="86" cy="50" r="7"/><circle cx="102" cy="50" r="7"/><circle cx="118" cy="50" r="7"/><circle cx="134" cy="50" r="7"/>
+                    <circle cx="22" cy="66" r="7"/><circle cx="38" cy="66" r="7"/><circle cx="54" cy="66" r="7"/><circle cx="70" cy="66" r="7"/><circle cx="86" cy="66" r="7"/><circle cx="102" cy="66" r="7"/><circle cx="118" cy="66" r="7"/><circle cx="134" cy="66" r="7"/>
+                    <circle cx="22" cy="82" r="7"/><circle cx="38" cy="82" r="7"/><circle cx="54" cy="82" r="7"/><circle cx="70" cy="82" r="7"/><circle cx="86" cy="82" r="7"/><circle cx="102" cy="82" r="7"/><circle cx="118" cy="82" r="7"/><circle cx="134" cy="82" r="7"/>
+                    <circle cx="22" cy="98" r="7"/><circle cx="38" cy="98" r="7"/><circle cx="54" cy="98" r="7"/><circle cx="70" cy="98" r="7"/><circle cx="86" cy="98" r="7"/><circle cx="102" cy="98" r="7"/><circle cx="118" cy="98" r="7"/><circle cx="134" cy="98" r="7"/>
+                    <circle cx="22" cy="114" r="7"/><circle cx="38" cy="114" r="7"/><circle cx="54" cy="114" r="7"/><circle cx="70" cy="114" r="7"/><circle cx="86" cy="114" r="7"/><circle cx="102" cy="114" r="7"/><circle cx="118" cy="114" r="7"/><circle cx="134" cy="114" r="7"/>
+                  </g>
+                  <g fill="#25c7f1">
+                    <circle cx="54" cy="50" r="8"/>
+                    <circle cx="70" cy="50" r="8"/>
+                    <circle cx="86" cy="50" r="8"/>
+                    <circle cx="86" cy="66" r="8"/>
+                    <circle cx="86" cy="82" r="8"/>
+                    <circle cx="86" cy="98" r="8"/>
+                  </g>
+                  <circle cx="102" cy="34" r="8" fill="#22d27a"/>
+                </svg>
+              </div>
+              <div class="challenge-copy">
+                <h2 data-i18n="challenges.snake.title">Solo Snake</h2>
+                <p data-i18n="challenges.snake.desc">Classic snake game with a twist. Write algorithms to automate the snake's movement efficiently.</p>
+                <span class="difficulty easy" data-i18n="difficulty.easy">Easy</span>
+              </div>
+              <div class="arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+              </div>
+            </a>
+
+      <a class="challenge-card" href="/challenges/games/labyrinth/" aria-label="Open Labyrinth challenge">
+              <div class="thumb" aria-hidden="true">
+                <svg viewBox="0 0 160 140">
+                  <rect width="160" height="140" fill="#060f22"/>
+                  <g stroke="#304768" stroke-width="4" fill="none" opacity="0.95">
+                    <path d="M28 24h104v28H76v16h36v18H84v18h48"/>
+                    <path d="M28 24v90h104"/>
+                    <path d="M44 24v24"/>
+                    <path d="M60 24v14"/>
+                    <path d="M96 52v16"/>
+                    <path d="M60 68h24"/>
+                  </g>
+                  <path d="M28 24v48h24v18h32v24" stroke="#25d07d" stroke-width="4" fill="none"/>
+                  <circle cx="28" cy="24" r="4.5" fill="#2b8bff"/>
+                  <circle cx="84" cy="114" r="4.5" fill="#2bdf8f"/>
+                </svg>
+              </div>
+              <div class="challenge-copy">
+                <h2 data-i18n="challenges.labyrinth.title">Labyrinth</h2>
+                <p data-i18n="challenges.labyrinth.desc">Navigate through complex mazes using pathfinding algorithms. Find the shortest route to victory.</p>
+                <span class="difficulty medium" data-i18n="difficulty.medium">Medium</span>
+              </div>
+              <div class="arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+              </div>
+            </a>
+
+      <a class="challenge-card" href="/challenges/games/course-tr%C3%A9sor/" aria-label="Open Treasure Run challenge">
+              <div class="thumb" aria-hidden="true">
+                <svg viewBox="0 0 160 140">
+                  <rect width="160" height="140" fill="#060f22"/>
+                  <g fill="#162846">
+                    <circle cx="22" cy="18" r="7"/><circle cx="38" cy="18" r="7"/><circle cx="54" cy="18" r="7"/><circle cx="70" cy="18" r="7"/><circle cx="86" cy="18" r="7"/><circle cx="102" cy="18" r="7"/><circle cx="118" cy="18" r="7"/><circle cx="134" cy="18" r="7"/>
+                    <circle cx="22" cy="34" r="7"/><circle cx="38" cy="34" r="7"/><circle cx="54" cy="34" r="7"/><circle cx="70" cy="34" r="7"/><circle cx="86" cy="34" r="7"/><circle cx="102" cy="34" r="7"/><circle cx="118" cy="34" r="7"/><circle cx="134" cy="34" r="7"/>
+                    <circle cx="22" cy="50" r="7"/><circle cx="38" cy="50" r="7"/><circle cx="54" cy="50" r="7"/><circle cx="70" cy="50" r="7"/><circle cx="86" cy="50" r="7"/><circle cx="102" cy="50" r="7"/><circle cx="118" cy="50" r="7"/><circle cx="134" cy="50" r="7"/>
+                    <circle cx="22" cy="66" r="7"/><circle cx="38" cy="66" r="7"/><circle cx="54" cy="66" r="7"/><circle cx="70" cy="66" r="7"/><circle cx="86" cy="66" r="7"/><circle cx="102" cy="66" r="7"/><circle cx="118" cy="66" r="7"/><circle cx="134" cy="66" r="7"/>
+                    <circle cx="22" cy="82" r="7"/><circle cx="38" cy="82" r="7"/><circle cx="54" cy="82" r="7"/><circle cx="70" cy="82" r="7"/><circle cx="86" cy="82" r="7"/><circle cx="102" cy="82" r="7"/><circle cx="118" cy="82" r="7"/><circle cx="134" cy="82" r="7"/>
+                    <circle cx="22" cy="98" r="7"/><circle cx="38" cy="98" r="7"/><circle cx="54" cy="98" r="7"/><circle cx="70" cy="98" r="7"/><circle cx="86" cy="98" r="7"/><circle cx="102" cy="98" r="7"/><circle cx="118" cy="98" r="7"/><circle cx="134" cy="98" r="7"/>
+                    <circle cx="22" cy="114" r="7"/><circle cx="38" cy="114" r="7"/><circle cx="54" cy="114" r="7"/><circle cx="70" cy="114" r="7"/><circle cx="86" cy="114" r="7"/><circle cx="102" cy="114" r="7"/><circle cx="118" cy="114" r="7"/><circle cx="134" cy="114" r="7"/>
+                  </g>
+                  <circle cx="54" cy="50" r="8" fill="#3b82f6"/>
+                  <circle cx="86" cy="34" r="8" fill="#f59e0b"/>
+                  <circle cx="102" cy="50" r="8" fill="#f59e0b"/>
+                  <circle cx="102" cy="66" r="8" fill="#f59e0b"/>
+                  <circle cx="54" cy="98" r="8" fill="#f59e0b"/>
+                  <circle cx="70" cy="82" r="8" fill="#dc2626"/>
+                  <circle cx="86" cy="82" r="8" fill="#dc2626"/>
+                  <circle cx="102" cy="82" r="8" fill="#dc2626"/>
+                  <circle cx="118" cy="66" r="8" fill="#dc2626"/>
+                  <circle cx="118" cy="50" r="8" fill="#dc2626"/>
+                </svg>
+              </div>
+              <div class="challenge-copy">
+                <h2 data-i18n="challenges.treasure.title">Treasure Run</h2>
+                <p data-i18n="challenges.treasure.desc">Collect maximum treasures while avoiding traps. Optimize your path using greedy algorithms.</p>
+                <span class="difficulty medium" data-i18n="difficulty.medium">Medium</span>
+              </div>
+              <div class="arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+              </div>
+            </a>
+
+    </section>
+  </main>
+  <script src="/shared/i18n.js"></script>
+  <script src="/shared/i18n-engine.js"></script>
+  <script src="/theme-toggle.js"></script>
+</body>
+</html>

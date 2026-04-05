@@ -1,0 +1,22 @@
+{
+  "meta": {
+    "title": "Perfect haul",
+    "lanes": ["left", "center", "right"],
+    "length": 12
+  },
+  "player": { "startLane": "center" },
+  "steps": [
+    { "t": 0, "move": "CENTER" },
+    { "t": 1, "move": "CENTER" },
+    { "t": 2, "move": "CENTER" },
+    { "t": 3, "move": "CENTER" },
+    { "t": 4, "move": "CENTER" },
+    { "t": 5, "move": "CENTER" },
+    { "t": 6, "move": "CENTER" },
+    { "t": 7, "move": "CENTER" },
+    { "t": 8, "move": "CENTER" },
+    { "t": 9, "move": "CENTER" },
+    { "t": 10, "move": "CENTER" },
+    { "t": 11, "move": "CENTER" }
+  ]
+}

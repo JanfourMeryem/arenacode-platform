@@ -1,0 +1,40 @@
+{
+  "metadata": {
+    "title": "Tight Turns Drill",
+    "description": "Practices dense routing and shows how self-collisions are detected.",
+    "date": "2025-03-01",
+    "version": "1.0"
+  },
+  "grid": { "width": 30, "height": 18 },
+  "player": {
+    "name": "Circuit Python",
+    "color": {
+      "head": "#8ee000",
+      "body": "#173205",
+      "glow": "#9df22b"
+    },
+    "startPosition": { "x": 7, "y": 6 },
+    "startDirection": "RIGHT",
+    "initialLength": 4
+  },
+  "moves": [
+    { "turn": 1, "direction": "RIGHT" },
+    { "turn": 2, "direction": "RIGHT" },
+    { "turn": 3, "direction": "RIGHT" },
+    { "turn": 4, "direction": "UP" },
+    { "turn": 5, "direction": "UP" },
+    { "turn": 6, "direction": "UP" },
+    { "turn": 7, "direction": "LEFT" },
+    { "turn": 8, "direction": "LEFT" },
+    { "turn": 9, "direction": "LEFT" },
+    { "turn": 10, "direction": "DOWN" },
+    { "turn": 11, "direction": "DOWN" },
+    { "turn": 12, "direction": "DOWN" },
+    { "turn": 13, "direction": "UP" }
+  ],
+  "result": {
+    "outcome": "fail",
+    "reason": "Ran into itself while exiting the corridor",
+    "finalTurn": 13
+  }
+}
